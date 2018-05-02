@@ -1,6 +1,11 @@
 <template>
     <div class="container">
          {{getVal(servicios.servicio, servicios.favoritos)}}
+
+        <div v-if="servicios.servicio">
+            {{filtrar(servicios.servicio.titulo, servicios.servicio.descripcion)}}
+        </div>
+
         <div class="row">
             <div class="6u">
                 <div v-if="servicios.imagenes">
@@ -25,9 +30,9 @@
             <div class="6u">
                 <section class="special box">                
                     <div style="text-align: left">
-                        <div v-if="servicios.servicio">
-                            <h3>{{servicios.servicio.titulo}}</h3>
-                        </div>
+                            <h3> 
+                                <div id="titulo"></div>
+                            </h3>
                         <div v-if="servicios.autor">
                             <h5 style="color: blue"> Autor: {{servicios.autor.nombre}} {{servicios.autor.apellido}}</h5>
                         </div>
@@ -114,21 +119,22 @@
 
                 <div class="9u">
                     <section class="special box">
-                        <div v-if="servicios.servicio" v-html="servicios.servicio.descripcion"> </div>
+                        <div id="descripcion"> </div>
                     </section>
                 </div>
             </div>
         </div>
 
         </div>
+
     </div>
 
 </template>
 
 
 
-
 <script>
+
     import axios from 'axios';
 
     import { swiper, swiperSlide } from 'vue-awesome-swiper'
@@ -154,6 +160,20 @@
                 },
                 servicios : [],
                 val: 2,
+                malas_palabras: [
+                                    {"word": "puta"},
+                                    {"word": "droga"},
+                                    {"word": "marihuana"},
+                                    {"word": "pico"},
+                                    {"word": "ereccion"},
+                                    {"word": "pene"},
+                                    {"word": "vagina"},
+                                    {"word": "mojon"},
+                                    {"word": "porno"},
+                                    {"word": "pichula"},
+                                    {"word": "ano"},
+                                    {"word": "sex"}
+                                ]
             }
         },
         props: {
@@ -171,7 +191,10 @@
                 var urlKeeps = '/detalleServicio/'+this.$route.query.idAnuncio;
                 axios.get(urlKeeps).then(response => {
                     this.servicios = response.data
+                    this.titulo = this.servicios.servicio.titulo;
                 });
+
+                return this.titulo;
             },
             getVal: function(servicio, favoritos) {
                 var valor = 2;
@@ -195,12 +218,79 @@
             //FUNCION PARA MOSTRAR INFORMACION DE CONTACTO DEL ANUNCIANTE
             mostrar: function() {
                 document.getElementById('lista_contacto').style.display = 'block';
+            },
+            filtrar: function(titulo, descripcion) {
+console.log(descripcion);
+                var arr = [];
+                var n = 0;
+
+                // Filtra malas palabras en el titulo
+
+                this.malas_palabras.forEach(function(list) {
+                    while (n != -1) {
+                        n = titulo.indexOf(list.word, n);
+                        if(n != -1){
+                            arr.push({"word": list.word, "indice":n});
+                            n = n + 1;
+                        }
+                    }
+                    n = 0;
+                });
+
+                var num_matches = descripcion.match(/ /gi).length;
+                console.log(num_matches);
+
+                // Call Sort By Name
+                arr.sort(SortByIndice);
+
+                for (let index = arr.length-1; index >= 0; index--) {
+                    titulo = [titulo.slice(0, arr[index].word.length+arr[index].indice), '</span>', titulo.slice(arr[index].word.length+arr[index].indice)].join('');
+                    titulo = [titulo.slice(0, arr[index].indice), '<span style="background-color: #BEF781; border-radius: 25px;">', titulo.slice(arr[index].indice)].join('');
+                }
+
+
+
+                // Filtra malas palabras en la descripcion
+                arr = [];
+                n = 0;
+
+                this.malas_palabras.forEach(function(list) {
+                    while (n != -1) {
+                        n = descripcion.indexOf(list.word, n);
+                        if(n != -1){
+                            arr.push({"word": list.word, "indice":n});
+                            n = n + 1;
+                        }
+                    }
+                    n = 0;
+                });
+
+                //Ordena las malas palabras (JSON) por el "indice"
+                function SortByIndice(x,y) {
+                    return ((x.indice == y.indice) ? 0 : ((x.indice > y.indice) ? 1 : -1 ));
+                }
+
+                // Call Sort By Name
+                arr.sort(SortByIndice);
+
+                for (let index = arr.length-1; index >= 0; index--) {
+                    descripcion = [descripcion.slice(0, arr[index].word.length+arr[index].indice), '</span>', descripcion.slice(arr[index].word.length+arr[index].indice)].join('');
+                    descripcion = [descripcion.slice(0, arr[index].indice), '<span style="background-color: #BEF781; border-radius: 25px;">', descripcion.slice(arr[index].indice)].join('');
+                }
+                
+
+                document.getElementById('titulo').innerHTML = titulo; 
+                document.getElementById('descripcion').innerHTML = descripcion; 
             }
         },
         mounted() {
-            console.log("ver_anuncio montado")
-            console.log(this.$route.query.idAnuncio)
-            this.getDetalle()
+            //console.log("ver_anuncio montado")
+            //console.log(this.$route.query.idAnuncio)
+            
+            this.getDetalle();
+
+            //this.filtrar();
+            
 
             /*
             this.$nextTick(() => {
@@ -253,6 +343,10 @@
   }
   .gallery-thumbs .swiper-slide-active {
     opacity: 1;
+  }
+
+  .mala_palabra{
+      background-color: red
   }
 </style>
 

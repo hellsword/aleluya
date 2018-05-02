@@ -62,8 +62,8 @@
                     this.Email = '';
                     this.Password = '';
                     this.errors = [];
-                    //window.location.href = "/";
-                    //toastr.success('Ha iniciado sesión correctamente');
+                    window.location.href = "/";
+                    toastr.success('Ha iniciado sesión correctamente');
                 }).catch(error => {
                     this.errors = 'Correo o contraseña incorrecta';
                 });
