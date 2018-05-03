@@ -237,8 +237,28 @@ console.log(descripcion);
                     n = 0;
                 });
 
-                var num_matches = descripcion.match(/ /gi).length;
-                console.log(num_matches);
+
+
+
+
+                var restringidos=" <>/,.";
+                var texto = descripcion.toLowerCase();
+                var caracteres_esp = 0;
+
+                for(var i=0; i<texto.length; i++){
+                    if (restringidos.indexOf(texto.charAt(i),0)!=-1){
+                        caracteres_esp = caracteres_esp + 1;
+                        texto = texto.replace(texto.charAt(i), '');
+                    }
+                }
+
+                //num_matches = descripcion.match(/ /gi).length;
+                console.log(caracteres_esp);
+console.log(texto);
+
+
+
+
 
                 // Call Sort By Name
                 arr.sort(SortByIndice);
