@@ -100,6 +100,7 @@
 							<router-view name="aside_secretaria" :auth=servicios.auth></router-view>
 							<router-view name="anuncios"></router-view>
 							<router-view name="listausuarios"></router-view>
+							<router-view name="agregarpalabra"></router-view>
               <router-view name="servicios" :servicios=servicios :ruta=getPath() :auth=servicios.auth ></router-view>
 
           </div>

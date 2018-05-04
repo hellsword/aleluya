@@ -54,6 +54,7 @@
                             <li><a href="/usuarios/adm_categorias">Administrar categorías</a></li>
                             <li><router-link to="/listausuarios">Lista Usuarios</router-link></li>
                             <li><a href="/usuarios/create">Crear Usuarios</a></li>
+                            <li><router-link to="/agregarpalabra">Agregar palabra al diccionario</router-link></li>
                             <li class="divider"></li>
                             <li><a href="/logout">Salir</a></li>
                           </ul>

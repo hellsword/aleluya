@@ -34,7 +34,8 @@ import VerAnuncio from './components/VerAnuncio.vue'
 import Anuncios from './components/Secretaria/Anuncios.vue'
 import AsideSecretaria from './components/Aside/AsideSecretaria.vue'
 import ListaUsuarios from './components/ListaUsuarios.vue'
-
+import AgregarPalabra from './components/Diccionario/AgregarPalabra.vue'
+//import Diccionario from './components/Diccionario/Diccionario.vue'
 
 // 2. Define algunas rutas
 // Cada ruta debe mapear a un componente. El "componente" puede
@@ -101,7 +102,16 @@ const routes = [
             nav: Nav,
             listausuarios: ListaUsuarios
         }
+    },
+    {
+        path: '/agregarpalabra',
+        components: {
+            nav: Nav,
+            agregarpalabra: AgregarPalabra
+
+        }
     }
+
   ]
 
 

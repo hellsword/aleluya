@@ -30,6 +30,8 @@ Route::resource('appAnuncios','AnuncioController');
 Route::resource('usuarios','UserController');
 
 Route::resource('cupones','CuponController');
+Route::resource('diccionario','DiccionarioController');
+
 
 
 Route::get('/{vue?}', function () { return view('principal'); })->where('vue', '[\/\w\.-]*');

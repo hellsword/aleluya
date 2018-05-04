@@ -43,7 +43,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-    	if($request){
+      /*if($request){
            if($this->auth->user()->tipo=='admin' || $this->auth->user()->tipo=='secretaria'){
             $query=trim($request->get('searchText'));
             
@@ -62,10 +62,24 @@ class UserController extends Controller
              return ["usuarios" => $usuarios, "searchText" => $query];
 
           }
-      }
+      }*/
+
+      $usuarios = DB::table('users')->select('id as id','rut as rut','nombre as nombre','apellido as apellido','email as email')->paginate(5);
+      //$usuarios = DB::table('users')->first();
+      //return ["usuarios"=>$usuarios];
+      return [
+              'pagination'=>[ 'total'=>$usuarios->total(),
+                            'current_page'=>$usuarios->currentPage(),
+                            'per_page'=>$usuarios->perPage(),
+                            'last_page'=>$usuarios->lastPage(),
+                            'from'=>$usuarios->firstItem(),
+                            'to'=>$usuarios->lastPage()
+               ],
+              'usuarios'=>$usuarios
+            ];
+
 
     }
-
 
  
 
