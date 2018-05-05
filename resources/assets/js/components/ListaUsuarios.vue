@@ -113,12 +113,13 @@
                 this.getUsuarios(page);
 
             },
-            deletepalabra: function(usuario){
+            deleteusuario: function(usuario){
 
                 var url = 'usuarios/' + usuario.id;
                 //alert(url);
                 axios.delete(url).then(response => {
-                     this.getUsuarios();            
+                    toastr.success('Usuario eliminado correctamente');
+                    this.getUsuarios();            
                 });
             
             }
