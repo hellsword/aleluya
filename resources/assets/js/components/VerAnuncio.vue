@@ -172,6 +172,7 @@
                                     {"word": "porno"},
                                     {"word": "pichula"},
                                     {"word": "ano"},
+                                    {"word": "prostitucion"},
                                     {"word": "sex"}
                                 ]
             }
@@ -241,20 +242,58 @@ console.log(descripcion);
 
 
 
-                var restringidos=" <>/,.";
+                var maldades = [];
+                var restringidos=" !#$%&'()*+-.,/:;<=>?@[\]^_`{|}~ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜø£Ø×ƒáíóúªº¿®¬½¼¡«»░▒▓│┤ÁÂÀ©╣║╗╝¢¥┐└┴┬├─┼ãÃ╚╔╩╦╠═╬¤ðÐÊËÈıÍÎÏ┘┌█▄¦Ì▀ÓßÔÒõÕµþÞÚÛÙýÝ¯´­±‗¾¶§÷¸°¨·¹³²■";
                 var texto = descripcion.toLowerCase();
+                var sub_texto_inicio;
+                var sub_texto;
                 var caracteres_esp = 0;
+                n = 0;
 
-                for(var i=0; i<texto.length; i++){
-                    if (restringidos.indexOf(texto.charAt(i),0)!=-1){
-                        caracteres_esp = caracteres_esp + 1;
-                        texto = texto.replace(texto.charAt(i), '');
+                //elimina acentos
+                /*
+                texto = texto.replace(new RegExp(/\s/g),"");
+                texto = texto.replace(new RegExp(/[àáâãäå]/g),"a");
+                texto = texto.replace(new RegExp(/[èéêë]/g),"e");
+                texto = texto.replace(new RegExp(/[ìíîï]/g),"i");
+                texto = texto.replace(new RegExp(/ñ/g),"n");                
+                texto = texto.replace(new RegExp(/[òóôõö]/g),"o");
+                texto = texto.replace(new RegExp(/[ùúûü]/g),"u");
+                */
+
+console.log("**************************************************")
+
+var temp_text;
+
+                for(var i = texto.length-1; i >= 0; i--){
+
+                    sub_texto_inicio = texto.substring(0, i-1);     //obtiene la primera parte del texto antes de la posicion actual
+                    sub_texto = texto.substring(i, texto.length);   //obtiene la parte del texto de la posicion actual hasta el final
+                    //console.log( sub_texto);
+                    
+                    for (var j = sub_texto.length-1 ; j >= 0  ; j--) {
+
+                        if (restringidos.indexOf(sub_texto.charAt(j),0)!=-1){
+                            caracteres_esp = caracteres_esp + 1;    //cuenta los caracteres especiales eliminados
+                            sub_texto = sub_texto.replace(sub_texto.charAt(j), ''); //elimina caracteres especiales en la sub-cadena
+                            texto = sub_texto_inicio+sub_texto;    //vuelve a unir el texto 
+                        }
+                        
                     }
+                        //esto es para probar que imprime al llegar a la posicion 1600 del texto
+                       if(i == 1600){      
+                                console.log( texto );
+                            }
+                    
                 }
+//console.log( temp_text );
+                
+               
 
                 //num_matches = descripcion.match(/ /gi).length;
-                console.log(caracteres_esp);
-console.log(texto);
+                //console.log(caracteres_esp);
+//console.log(texto);
+
 
 
 
