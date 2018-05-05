@@ -13,6 +13,7 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
+                    <th>Acciones</th>
                 </thead>
                 <tr v-for="usuario in usuarios"> 
                     <td>{{usuario.id}}</td>
@@ -20,6 +21,7 @@
                     <td>{{usuario.nombre}}</td>
                     <td>{{usuario.apellido}}</td>
                     <td>{{usuario.email}}</td>
+                    <td><a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="deleteusuario(usuario)">Eliminar</a></td>
                 </tr>
             </table>
 
@@ -110,6 +112,15 @@
                 this.pagination.current_page = page;
                 this.getUsuarios(page);
 
+            },
+            deletepalabra: function(usuario){
+
+                var url = 'usuarios/' + usuario.id;
+                //alert(url);
+                axios.delete(url).then(response => {
+                     this.getUsuarios();            
+                });
+            
             }
         },
         mounted() {

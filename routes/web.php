@@ -29,6 +29,7 @@ Route::resource('appServicios','ServiciosController');
 Route::resource('appAnuncios','AnuncioController');
 Route::resource('usuarios','UserController');
 
+Route::resource('registro','UserController2');
 Route::resource('cupones','CuponController');
 Route::resource('diccionario','DiccionarioController');
 

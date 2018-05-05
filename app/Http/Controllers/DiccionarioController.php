@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+
 use App\Diccionario;
 
-use Illuminate\Support\Facades\Redirect;
 use DB;
+use Illuminate\Contracts\Auth\Guard;
+use Closure;
+use Session;
 
 class DiccionarioController extends Controller
 {
@@ -43,5 +47,11 @@ class DiccionarioController extends Controller
 
       return;  
 
+    }
+
+    public function destroy($id)
+    {
+        Diccionario::destroy($id);
+        return;
     }
 }

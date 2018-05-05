@@ -37,6 +37,7 @@
                         </thead>
                         <tr v-for="palab in dic"> 
                             <td>{{palab.palabra}}</td>
+                            <td><a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="deletepalabra(palab)">Eliminar</a></td>
                         </tr>
                     </table>
 
@@ -155,6 +156,15 @@
                 this.pagination.current_page = page;
                 this.GetDiccionario(page);
 
+            },
+            deletepalabra: function(palab){
+
+            	var url = 'diccionario/.' + palab.palabra;
+            	//alert(url);
+            	axios.delete(url).then(response => {
+                     this.GetDiccionario();            
+                });
+            
             }
         },
 
