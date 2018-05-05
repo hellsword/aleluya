@@ -238,10 +238,22 @@ console.log(descripcion);
                     n = 0;
                 });
 
+                // Call Sort By Name
+                arr.sort(SortByIndice);
+
+                for (let index = arr.length-1; index >= 0; index--) {
+                    titulo = [titulo.slice(0, arr[index].word.length+arr[index].indice), '</span>', titulo.slice(arr[index].word.length+arr[index].indice)].join('');
+                    titulo = [titulo.slice(0, arr[index].indice), '<span style="background-color: #BEF781; border-radius: 25px;">', titulo.slice(arr[index].indice)].join('');
+                }
 
 
 
 
+
+
+                // Filtra malas palabras en la descripcion
+                arr = [];
+                n = 0;
                 var maldades = [];
                 var restringidos=" !#$%&'()*+-.,/:;<=>?@[\]^_`{|}~ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜø£Ø×ƒáíóúªº¿®¬½¼¡«»░▒▓│┤ÁÂÀ©╣║╗╝¢¥┐└┴┬├─┼ãÃ╚╔╩╦╠═╬¤ðÐÊËÈıÍÎÏ┘┌█▄¦Ì▀ÓßÔÒõÕµþÞÚÛÙýÝ¯´­±‗¾¶§÷¸°¨·¹³²■";
                 var texto = descripcion.toLowerCase();
@@ -260,33 +272,59 @@ console.log(descripcion);
                 texto = texto.replace(new RegExp(/[òóôõö]/g),"o");
                 texto = texto.replace(new RegExp(/[ùúûü]/g),"u");
                 */
-
+/*
+console.log( texto.length );
+console.log( texto[2333] );
+console.log( texto[2332] );
+console.log( texto[2331] );
+console.log( texto[2330] );
+console.log( texto[2329] );
+*/
 console.log("**************************************************")
 
 var temp_text;
 
                 for(var i = texto.length-1; i >= 0; i--){
-
-                    sub_texto_inicio = texto.substring(0, i-1);     //obtiene la primera parte del texto antes de la posicion actual
-                    sub_texto = texto.substring(i, texto.length);   //obtiene la parte del texto de la posicion actual hasta el final
-                    //console.log( sub_texto);
                     
-                    for (var j = sub_texto.length-1 ; j >= 0  ; j--) {
-
-                        if (restringidos.indexOf(sub_texto.charAt(j),0)!=-1){
-                            caracteres_esp = caracteres_esp + 1;    //cuenta los caracteres especiales eliminados
-                            sub_texto = sub_texto.replace(sub_texto.charAt(j), ''); //elimina caracteres especiales en la sub-cadena
-                            texto = sub_texto_inicio+sub_texto;    //vuelve a unir el texto 
-                        }
-                        
+                    sub_texto_inicio = texto.substring(0, i);     //obtiene la primera parte del texto antes de la posicion actual
+                    sub_texto = texto.substring(i, texto.length);   //obtiene la parte del texto de la posicion actual hasta el final
+                    
+                    if (restringidos.indexOf(sub_texto[0],0)!=-1){
+                        caracteres_esp = caracteres_esp + 1;    //cuenta los caracteres especiales eliminados
+                        sub_texto = sub_texto.replace(sub_texto[0], ''); //elimina caracteres especiales en la sub-cadena
+                        texto = sub_texto_inicio+sub_texto;    //vuelve a unir el texto 
+                      
                     }
-                        //esto es para probar que imprime al llegar a la posicion 1600 del texto
-                       if(i == 1600){      
-                                console.log( texto );
-                            }
+                    else{
+
+                        this.malas_palabras.forEach(function(list) {
+                                temp_text = sub_texto.substring(0, list.word.length);
+                                n = temp_text.indexOf(list.word, 0);
+                                if(n != -1 && n == 0){
+                                    var ultima_palabra = list.word[list.word.length-1];
+                                    var repeticiones = temp_text.split(ultima_palabra).length-1;
+                                    var final = n+i+1;
+
+                                    while (repeticiones != 0) {
+                                        if(descripcion[final].toLowerCase() == ultima_palabra)
+                                            repeticiones--;
+                                        final++;
+                                    }
+
+                                    arr.push({"word": list.word, "indice": n+i,  "final": final});
+                                    //console.log( n+' + '+i );
+                                }
+                        });
+
+                    }
+                    
+                    //console.log( arr );
+                    //esto es para probar que imprime al llegar a la posicion 1600 del texto
+                       
                     
                 }
-//console.log( temp_text );
+console.log( arr );
+
                 
                
 
@@ -299,30 +337,8 @@ var temp_text;
 
 
 
-                // Call Sort By Name
-                arr.sort(SortByIndice);
 
-                for (let index = arr.length-1; index >= 0; index--) {
-                    titulo = [titulo.slice(0, arr[index].word.length+arr[index].indice), '</span>', titulo.slice(arr[index].word.length+arr[index].indice)].join('');
-                    titulo = [titulo.slice(0, arr[index].indice), '<span style="background-color: #BEF781; border-radius: 25px;">', titulo.slice(arr[index].indice)].join('');
-                }
-
-
-
-                // Filtra malas palabras en la descripcion
-                arr = [];
-                n = 0;
-
-                this.malas_palabras.forEach(function(list) {
-                    while (n != -1) {
-                        n = descripcion.indexOf(list.word, n);
-                        if(n != -1){
-                            arr.push({"word": list.word, "indice":n});
-                            n = n + 1;
-                        }
-                    }
-                    n = 0;
-                });
+                
 
                 //Ordena las malas palabras (JSON) por el "indice"
                 function SortByIndice(x,y) {
@@ -333,13 +349,14 @@ var temp_text;
                 arr.sort(SortByIndice);
 
                 for (let index = arr.length-1; index >= 0; index--) {
-                    descripcion = [descripcion.slice(0, arr[index].word.length+arr[index].indice), '</span>', descripcion.slice(arr[index].word.length+arr[index].indice)].join('');
+                    descripcion = [descripcion.slice(0, arr[index].final), '</span>', descripcion.slice(arr[index].final)].join('');
                     descripcion = [descripcion.slice(0, arr[index].indice), '<span style="background-color: #BEF781; border-radius: 25px;">', descripcion.slice(arr[index].indice)].join('');
                 }
                 
 
                 document.getElementById('titulo').innerHTML = titulo; 
                 document.getElementById('descripcion').innerHTML = descripcion; 
+                
             }
         },
         mounted() {
