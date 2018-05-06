@@ -8,7 +8,7 @@ class Diccionario extends Model
 {
     protected $table = 'diccionario';
 
-    protected $primarykey = 'palabra';
+    protected $primarykey = 'id, palabra';
 
     public $timestamps = false;
 

@@ -35,9 +35,9 @@
 			        <table class="table table-striped table-bordered table-condensed table-hover">
                         <thead>
                         </thead>
-                        <tr v-for="palab in dic"> 
+                        <tr v-for="palab in dic">
                             <td>{{palab.palabra}}</td>
-                            <td><a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="deletepalabra(palab)">Eliminar</a></td>
+                            <td><a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="deletepalabra(palab.id)">Eliminar</a></td>
                         </tr>
                     </table>
 
@@ -159,10 +159,12 @@
             },
             deletepalabra: function(palab){
 
-            	var url = 'diccionario/.' + palab.palabra;
-            	//alert(url);
+            	var url = 'diccionario/' + palab;
+            	//alert(palab);
+                
             	axios.delete(url).then(response => {
-                     this.GetDiccionario();            
+                    toastr.success('Palabra eliminada correctamente');
+                    this.GetDiccionario();            
                 });
             
             }

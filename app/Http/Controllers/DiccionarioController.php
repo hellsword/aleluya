@@ -16,7 +16,7 @@ class DiccionarioController extends Controller
 {
     public function index(Request $request)
     {
-    	 $dic = DB::table('diccionario')->select('palabra as palabra')->orderBy('palabra','asc')->paginate(4);
+    	 $dic = DB::table('diccionario')->select('id as id','palabra as palabra')->orderBy('palabra','asc')->paginate(4);
       return [
               'pagination'=>[ 'total'=>$dic->total(),
                             'current_page'=>$dic->currentPage(),

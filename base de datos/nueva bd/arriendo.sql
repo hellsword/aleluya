@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-05-2018 a las 07:02:30
+-- Tiempo de generación: 06-05-2018 a las 05:59:27
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.1.16
 
@@ -589,6 +589,7 @@ CREATE TABLE `cupones` (
 --
 
 CREATE TABLE `diccionario` (
+  `id` int(11) NOT NULL,
   `palabra` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -596,12 +597,12 @@ CREATE TABLE `diccionario` (
 -- Volcado de datos para la tabla `diccionario`
 --
 
-INSERT INTO `diccionario` (`palabra`) VALUES
-('caca'),
-('cocaina'),
-('heroina'),
-('marihuana'),
-('prostitucion');
+INSERT INTO `diccionario` (`id`, `palabra`) VALUES
+(1, 'marihuana'),
+(3, 'cocaina'),
+(6, 'heroina'),
+(7, 'conchetumadre'),
+(8, 'maricon');
 
 -- --------------------------------------------------------
 
@@ -877,9 +878,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `rut`, `nombre`, `apellido`, `email`, `password`, `tipo`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '19.344.212-2', 'Boris', 'Mora', 'admin@ucm.cl', '$2y$10$aIZ6WaeH7CgP/EjyxmS3dOr20aG9cRsgnUMiXrBlyUZgBI80R6WxC', 'admin', 'z1OYjqhr4el6Jd6n9pIFT3QCi2OkCUcECSHipzZqJ8e1FIURjY1C9v7KIK7C', '2017-10-17 00:51:12.0', '2017-10-17 00:51:12.0'),
+(1, '19.344.212-2', 'Boris', 'Mora', 'admin@ucm.cl', '$2y$10$aIZ6WaeH7CgP/EjyxmS3dOr20aG9cRsgnUMiXrBlyUZgBI80R6WxC', 'admin', '3PQ2HWboOViz0A6hFAWxKduvhmGqd7OZ3hekjiFhth2CSnA6eryrHwxShegs', '2017-10-17 00:51:12.0', '2017-10-17 00:51:12.0'),
 (2, '17.324.545-6', 'Rodrigo', 'Rodirguez', 'cliente@ucm.cl', '$2y$10$8fxHUBybt8ux4zVJ7eQmHOuZvLFJbilnnEMT65ei2Lw8dtqqN/qCS', 'cliente', 'rnjjvENkpS8OxILGYNzx1ncOVxq4b8PEdHWP13l9sNeEMKL8E0aMM21mQdX0', '2017-10-17 00:54:59.0', '2017-10-17 00:54:59.0'),
-(3, '18938323-5', 'Fernanda', 'Fernandez', 'secretaria@ucm.cl', '$2y$10$tAoGISY0s4T0jikX4JCQpOBEGMDODSpmC34bDsMdenNU9eLcQ6aBy', 'secretaria', 'gSx6aFx6DvjKftEyjmIWrAuVUH0gAvUB0zLhqe1dBpwAsDKSu2c6j6VpYV3L', '2017-10-17 00:55:50.0', '2017-10-17 00:55:50.0'),
+(3, '18938323-5', 'Fernanda', 'Fernandez', 'secretaria@ucm.cl', '$2y$10$tAoGISY0s4T0jikX4JCQpOBEGMDODSpmC34bDsMdenNU9eLcQ6aBy', 'secretaria', 'Lwkb06S4Y997uhQ4OxLLIA7DNXXcKhp7etdkLUIn8SVQEgOJvUr6VLWQACDU', '2017-10-17 00:55:50.0', '2017-10-17 00:55:50.0'),
 (5, '172232323-2', 'Constanza', 'Contreras', 'secretaria2@ucm.cl', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'secretaria', 'Tx2CCRttTtz7m3OpOJTx2HXaXIJREDWzP5o36G6VC8Ll49tkaq5P9skPAmut', '2017-10-18 07:03:02.0', '2017-10-18 07:03:02.0'),
 (7, '1832832324-5', 'Alfonso', 'Patamala', 'cliente4@ucm.cl', '$2y$10$1Nx0CdeN4yMYKEg6vCyjgev0PxA6N63iIXsSUh8b8uKpOfJQoGkMa', 'cliente', NULL, '2017-10-18 08:04:06.0', '2017-10-18 08:04:06.0'),
 (8, '1734234234-5', 'Susana', 'Castillo', 'cliente2@ucm.cl', '$2y$10$oy5hmF1Fe/6qo5By742VweZrk.v9wvF5MOO7XqR0tgPIFSvJ0mz8u', 'cliente', 'LNzXsalH5kZxu0nWyOan2dPc0BcVhbrlDdBsoGIDWXE3zvH6ibdYBkdUCq9j', '2017-10-18 21:01:18.0', '2017-10-18 21:01:18.0'),
@@ -978,7 +979,7 @@ ALTER TABLE `cupones`
 -- Indices de la tabla `diccionario`
 --
 ALTER TABLE `diccionario`
-  ADD PRIMARY KEY (`palabra`);
+  ADD PRIMARY KEY (`id`,`palabra`);
 
 --
 -- Indices de la tabla `favoritos`
@@ -1065,6 +1066,12 @@ ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `diccionario`
+--
+ALTER TABLE `diccionario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT de la tabla `forma_pago`
 --
 ALTER TABLE `forma_pago`
@@ -1074,7 +1081,7 @@ ALTER TABLE `forma_pago`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Restricciones para tablas volcadas
