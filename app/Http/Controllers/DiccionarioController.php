@@ -16,17 +16,23 @@ class DiccionarioController extends Controller
 {
     public function index(Request $request)
     {
-    	 $dic = DB::table('diccionario')->select('id as id','palabra as palabra')->orderBy('palabra','asc')->paginate(4);
-      return [
-              'pagination'=>[ 'total'=>$dic->total(),
-                            'current_page'=>$dic->currentPage(),
-                            'per_page'=>$dic->perPage(),
-                            'last_page'=>$dic->lastPage(),
-                            'from'=>$dic->firstItem(),
-                            'to'=>$dic->lastPage()
-               ],
-              'dic'=>$dic
-            ];
+    	$dic = DB::table('diccionario')->select('id as id','palabra as palabra')->orderBy('id','desc')->paginate(4);
+        return [
+                'pagination'=>[ 'total'=>$dic->total(),
+                                'current_page'=>$dic->currentPage(),
+                                'per_page'=>$dic->perPage(),
+                                'last_page'=>$dic->lastPage(),
+                                'from'=>$dic->firstItem(),
+                                'to'=>$dic->lastPage()
+                ],
+                'dic'=>$dic
+                ];
+    }
+
+
+    public function obtenerPalabras()
+    {
+        return DB::table('diccionario')->select('palabra as word')->get();
     }
 
 

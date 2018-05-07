@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/logout','Auth\LoginController@logout');
 
 Route::get('appFiltros','ServiciosController@filtros');
+Route::get('obtenerPalabras','DiccionarioController@obtenerPalabras');
 Route::get('detalleServicio/{id_anuncio}','ServiciosController@mostrar');
 //Route::post('nuevoServicio','ServiciosController@store');
 

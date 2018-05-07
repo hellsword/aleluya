@@ -3,7 +3,7 @@
          {{getVal(servicios.servicio, servicios.favoritos)}}
 
         <div v-if="servicios.servicio">
-            {{filtrar(servicios.servicio.titulo, servicios.servicio.descripcion)}}
+            {{comienza_filtrado(servicios.servicio.titulo, servicios.servicio.descripcion)}}
         </div>
 
         <div class="row">
@@ -93,9 +93,9 @@
         <!-- PARTE INFERIOR DEL ANUNCIO -->
         <div class="container">
             <div class="row">
-                <div class="3u">
+                <div class="12u" v-if="servicios.servicio">
                     <section class="special box">
-                        <div v-if="servicios.tipo_servicio == 'mecanico' || servicios.tipo_servicio == 'otros_per'">
+                        <div v-if="(servicios.servicio.tipo_servicio == 'mecanico' || servicios.servicio.tipo_servicio == 'otros_per')">
                             <div v-if="servicios.persona">
                                 <h4>Datos de la persona:</h4><br>
                                 <p>RUT: {{servicios.persona.rut}}</p>
@@ -106,7 +106,7 @@
                                 <p>Curriculum: {{servicios.persona.curriculum}}</p>
                             </div>
                         </div>
-                        <div v-if="servicios.tipo_servicio == 'arriendo' || servicios.tipo_servicio == 'transporte'">
+                        <div v-if="(servicios.servicio.tipo_servicio == 'arriendo' || servicios.servicio.tipo_servicio == 'transporte')">
                             <div v-if="servicios.vehiculo">
                                 <h4>Datos del vehículo:</h4><br>
                                 <p>Patente: {{servicios.vehiculo.patente}}</p>
@@ -117,9 +117,9 @@
                     </section>
                 </div>
 
-                <div class="9u">
+                <div class="12u">
                     <section class="special box">
-                        <div id="descripcion"> </div>
+                        <div align="justify" id="descripcion"> </div>
                     </section>
                 </div>
             </div>
@@ -160,21 +160,7 @@
                 },
                 servicios : [],
                 val: 2,
-                malas_palabras: [
-                                    {"word": "puta"},
-                                    {"word": "droga"},
-                                    {"word": "marihuana"},
-                                    {"word": "pico"},
-                                    {"word": "ereccion"},
-                                    {"word": "pene"},
-                                    {"word": "vagina"},
-                                    {"word": "mojon"},
-                                    {"word": "porno"},
-                                    {"word": "pichula"},
-                                    {"word": "ano"},
-                                    {"word": "prostitucion"},
-                                    {"word": "sex"}
-                                ]
+                malas_palabras: []
             }
         },
         props: {
@@ -187,6 +173,13 @@
             swiperSlide
         },
         methods: {
+            getPalabras: function() {
+                    
+                var urlKeeps = '/obtenerPalabras';
+                axios.get(urlKeeps).then(response => {
+                    this.malas_palabras = response.data
+                });
+            },
             getDetalle: function() {
                     
                 var urlKeeps = '/detalleServicio/'+this.$route.query.idAnuncio;
@@ -220,69 +213,25 @@
             mostrar: function() {
                 document.getElementById('lista_contacto').style.display = 'block';
             },
-            filtrar: function(titulo, descripcion) {
-console.log(descripcion);
+            comienza_filtrado: function(titulo, descripcion) {
+
+                titulo = this.filtrar(titulo);
+                document.getElementById('titulo').innerHTML = titulo; 
+
+                descripcion = this.filtrar(descripcion);
+                document.getElementById('descripcion').innerHTML = descripcion; 
+            },
+            filtrar: function(texto_no_filtrado) {
+                
+                // Filtra malas palabras en la texto_no_filtrado
                 var arr = [];
                 var n = 0;
-
-                // Filtra malas palabras en el titulo
-
-                this.malas_palabras.forEach(function(list) {
-                    while (n != -1) {
-                        n = titulo.indexOf(list.word, n);
-                        if(n != -1){
-                            arr.push({"word": list.word, "indice":n});
-                            n = n + 1;
-                        }
-                    }
-                    n = 0;
-                });
-
-                // Call Sort By Name
-                arr.sort(SortByIndice);
-
-                for (let index = arr.length-1; index >= 0; index--) {
-                    titulo = [titulo.slice(0, arr[index].word.length+arr[index].indice), '</span>', titulo.slice(arr[index].word.length+arr[index].indice)].join('');
-                    titulo = [titulo.slice(0, arr[index].indice), '<span style="background-color: #BEF781; border-radius: 25px;">', titulo.slice(arr[index].indice)].join('');
-                }
-
-
-
-
-
-
-                // Filtra malas palabras en la descripcion
-                arr = [];
-                n = 0;
-                var maldades = [];
                 var restringidos=" !#$%&'()*+-.,/:;<=>?@[\]^_`{|}~ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜø£Ø×ƒáíóúªº¿®¬½¼¡«»░▒▓│┤ÁÂÀ©╣║╗╝¢¥┐└┴┬├─┼ãÃ╚╔╩╦╠═╬¤ðÐÊËÈıÍÎÏ┘┌█▄¦Ì▀ÓßÔÒõÕµþÞÚÛÙýÝ¯´­±‗¾¶§÷¸°¨·¹³²■";
-                var texto = descripcion.toLowerCase();
+                var texto = texto_no_filtrado.toLowerCase();
                 var sub_texto_inicio;
                 var sub_texto;
                 var caracteres_esp = 0;
-                n = 0;
-
-                //elimina acentos
-                /*
-                texto = texto.replace(new RegExp(/\s/g),"");
-                texto = texto.replace(new RegExp(/[àáâãäå]/g),"a");
-                texto = texto.replace(new RegExp(/[èéêë]/g),"e");
-                texto = texto.replace(new RegExp(/[ìíîï]/g),"i");
-                texto = texto.replace(new RegExp(/ñ/g),"n");                
-                texto = texto.replace(new RegExp(/[òóôõö]/g),"o");
-                texto = texto.replace(new RegExp(/[ùúûü]/g),"u");
-                */
-/*
-console.log( texto.length );
-console.log( texto[2333] );
-console.log( texto[2332] );
-console.log( texto[2331] );
-console.log( texto[2330] );
-console.log( texto[2329] );
-*/
-console.log("**************************************************")
-
-var temp_text;
+                var temp_text;
 
                 for(var i = texto.length-1; i >= 0; i--){
                     
@@ -306,7 +255,7 @@ var temp_text;
                                     var final = n+i+1;
 
                                     while (repeticiones != 0) {
-                                        if(descripcion[final].toLowerCase() == ultima_palabra)
+                                        if(texto_no_filtrado[final].toLowerCase() == ultima_palabra)
                                             repeticiones--;
                                         final++;
                                     }
@@ -317,28 +266,8 @@ var temp_text;
                         });
 
                     }
-                    
-                    //console.log( arr );
-                    //esto es para probar que imprime al llegar a la posicion 1600 del texto
-                       
-                    
                 }
-console.log( arr );
 
-                
-               
-
-                //num_matches = descripcion.match(/ /gi).length;
-                //console.log(caracteres_esp);
-//console.log(texto);
-
-
-
-
-
-
-
-                
 
                 //Ordena las malas palabras (JSON) por el "indice"
                 function SortByIndice(x,y) {
@@ -349,13 +278,12 @@ console.log( arr );
                 arr.sort(SortByIndice);
 
                 for (let index = arr.length-1; index >= 0; index--) {
-                    descripcion = [descripcion.slice(0, arr[index].final), '</span>', descripcion.slice(arr[index].final)].join('');
-                    descripcion = [descripcion.slice(0, arr[index].indice), '<span style="background-color: #BEF781; border-radius: 25px;">', descripcion.slice(arr[index].indice)].join('');
+                    texto_no_filtrado = [texto_no_filtrado.slice(0, arr[index].final), '</span>', texto_no_filtrado.slice(arr[index].final)].join('');
+                    texto_no_filtrado = [texto_no_filtrado.slice(0, arr[index].indice), '<span style="background-color: #BEF781; border-radius: 25px;">', texto_no_filtrado.slice(arr[index].indice)].join('');
                 }
                 
-
-                document.getElementById('titulo').innerHTML = titulo; 
-                document.getElementById('descripcion').innerHTML = descripcion; 
+                return texto_no_filtrado;
+                
                 
             }
         },
@@ -364,6 +292,7 @@ console.log( arr );
             //console.log(this.$route.query.idAnuncio)
             
             this.getDetalle();
+            this.getPalabras();
 
             //this.filtrar();
             

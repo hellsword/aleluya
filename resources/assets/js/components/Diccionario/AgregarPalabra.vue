@@ -137,8 +137,8 @@
                 }).then(response => {
                 	this.palabra = '';
                 	this.errors = [];
-                	window.location.href = "/agregarpalabra";
                 	toastr.success('Palabra ingresada correctamente');
+                    this.GetDiccionario();      
                 }).catch(error => {
                     this.errors = '	Ingreso erroneo';
                 });
