@@ -98,6 +98,7 @@
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.1.0"
+
   },
   "keywords": [
     "bulma",

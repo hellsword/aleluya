@@ -21,9 +21,6 @@
 		<script src="js/skel.min.js"></script>
 		<!-- <script src="js/skel-layers.min.js"></script>  -->
 		<script src="js/init.js"></script>
-
-		<!-- Filtro de malas palabras -->
-		<script src="js/JSWordsFilter.js"></script>
 		
 		<!--Iconos NAV -->
 		<link href="extra/css/pe-icon-7-stroke.css" rel="stylesheet" />
@@ -34,6 +31,7 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
+
 
 		<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
 		<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet" />
