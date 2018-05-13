@@ -82,7 +82,7 @@
 			<router-view name="nuevo_servicio" :filtros=filtros></router-view>
 
 			<!--Pagina para ver en detalle un anuncio -->
-			<router-view name="verAnuncio"></router-view>
+			<router-view name="verAnuncio" :auth=servicios.auth></router-view>
 
 			<!--Paginas de autentificacion -->
 			<router-view name="login" ></router-view>
@@ -99,9 +99,9 @@
               <router-view name="aside_search" :filtros=filtros></router-view>
 							<router-view name="aside_secretaria" :auth=servicios.auth></router-view>
 							<router-view name="anuncios"></router-view>
-							<router-view name="listausuarios"></router-view>
+							<router-view name="listausuarios" :auth=servicios.auth></router-view>
 							<router-view name="agregarpalabra"></router-view>
-              <router-view name="servicios" :servicios=servicios :ruta=getPath() :auth=servicios.auth ></router-view>
+              <router-view name="servicios" :ruta=getPath() :auth=servicios.auth ></router-view>
 
           </div>
         </div>

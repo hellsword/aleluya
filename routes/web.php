@@ -25,6 +25,7 @@ Route::get('detalleServicio/{id_anuncio}','ServiciosController@mostrar');
 //Route::post('nuevoServicio','ServiciosController@store');
 
 //Transferencia de datos
+Route::resource('misAnuncios','MisAnunciosController');
 Route::resource('appUltimosServicios','HomeController');
 Route::resource('appServicios','ServiciosController');
 Route::resource('appAnuncios','AnuncioController');

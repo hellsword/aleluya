@@ -60,7 +60,7 @@
                           </ul>
                            <ul v-if="auth.tipo == 'secretaria'" class="dropdown-menu">
                             <li><router-link to="/anuncios">Anuncios</router-link></li>
-                            <li><a href="/usuarios">Lista Usuarios</a></li>
+                            <li><router-link to="/listausuarios">Lista Usuarios</router-link></li>
                             <li class="divider"></li>
                             <li><a href="/logout">Salir</a></li>
                           </ul>

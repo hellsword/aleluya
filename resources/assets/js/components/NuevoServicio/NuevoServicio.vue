@@ -83,23 +83,28 @@
                 <p>
                     <label>Modo de pago</label>
                     <select name="modo_pago" id="modo_pago" class="uniformselect" v-model="modo_pago" required="">
-                        <option value="efectivo" >Efectivo</option>
+                        <option value="gratis">Plan gratuito</option>
                         <option value="tarjeta">Tarjeta de crédito</option>
+                        <!-- <option value="efectivo" >Efectivo</option>  -->
                     </select>   
                 </p>
             </div><br>
             
             <tarjeta v-if="modo_pago == 'tarjeta'" :num_tarjeta.sync="num_tarjeta" :tarjeta.sync="tarjeta" :mes.sync="mes" :year.sync="year" :c_seguridad.sync="c_seguridad"></tarjeta>
-            <label v-if="modo_pago == 'efectivo'">Pago en efectivo</label><br>    
+            <!-- <label v-if="modo_pago == 'efectivo'">Pago en efectivo</label><br>  -->   
 
-            <p>
-                <label>Duración del anuncio (meses): </label>
-                <span class="field"><input type="text" v-model="tiempo" id="tiempo" name="tiempo" class="input-small input-spinner" v-on:change="calcula_total" required="" placeholder="4" v-on:keypress="isNumber" /></span>
-            </p>
-            <p>
-                <label>Total: </label>
-                <span class="field"><input type="text" id="total" name="total" class="input-xxlarge" value="" readonly/></span>
-            </p>
+            <div v-if="modo_pago != 'gratis'" >
+                <p>
+                    <label>Duración del anuncio (meses): </label>
+                    <span class="field"><input type="text" v-model="tiempo" id="tiempo" name="tiempo" class="input-small input-spinner" v-on:change="calcula_total" required="" placeholder="4" v-on:keypress="isNumber" /></span>
+                </p>
+                <p>
+                    <label>Total: </label>
+                    <span class="field"><input type="text" id="total" name="total" class="input-xxlarge" value="" readonly/></span>
+                </p>
+            </div>
+
+            <!-- <button class="button is-primary" v-if="modo_pago == 'efectivo'" > Pagar </button> <br>  -->
             <br>
 
         </tab-content>
@@ -134,7 +139,7 @@
                 titulo: '',
                 precio_serv: '',
                 tipo: '',
-                modo_pago: 'efectivo',
+                modo_pago: 'gratis',
                 region: '',
                 provincia: '',
                 comuna: '',
@@ -210,7 +215,7 @@
                     this.titulo = '',
                     this.precio_serv = '',
                     this.tipo = '',
-                    this.modo_pago = 'efectivo',
+                    this.modo_pago = 'tarjeta',
                     this.region = '',
                     this.provincia = '',
                     this.comuna = '',

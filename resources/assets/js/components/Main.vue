@@ -1,6 +1,5 @@
 <template>
 <div>
-	<h3>echarts</h3>
 	<!-- INICIO SECCION EXPERIMENTAL DE CARRUSEL -->
 	<section>
 		<!-- swiper -->

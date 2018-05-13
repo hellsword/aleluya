@@ -21,7 +21,7 @@
                     <td>{{usuario.nombre}}</td>
                     <td>{{usuario.apellido}}</td>
                     <td>{{usuario.email}}</td>
-                    <td><a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="deleteusuario(usuario)">Eliminar</a></td>
+                    <td v-if="auth.tipo == 'admin'" ><a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="deleteusuario(usuario)">Eliminar</a></td>
                 </tr>
             </table>
 
@@ -66,6 +66,9 @@
                 },
                 offset: 3,               
             }
+        },
+        props: {
+            auth: { type: Object | Array },
         },
         computed:{
             isActive: function(){

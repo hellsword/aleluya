@@ -1,5 +1,9 @@
 <template>
     <div class="9u pull-right">
+        <div v-if="ruta == '/servicios'" >
+            {{getDatos() }}
+        </div>
+        
         <div v-for="servicio in servicios.servicios">
             {{getVal(servicio, servicios.favoritos)}}
             <hr>
@@ -79,15 +83,37 @@
     export default {
         data: function() {
             return {
-                val: 2
+                val: 2,
+                servicios: []
             }
         },
         props: {
-            servicios: { type: Object | Array },
             auth: { type: Object | Array },
             ruta: String
         },
         methods: {
+            getDatos(){
+                if(this.ruta == '/mis_anuncios'){
+                    this.servicios = [];
+                    this.getMisAnuncios();
+                }
+                else if(this.ruta == '/servicios'){
+                    this.servicios = [];
+                    this.getServicios();
+                }
+            },
+            getServicios: function() {
+                var urlKeeps = 'appServicios';
+                axios.get(urlKeeps).then(response => {
+                    this.servicios = response.data
+                });
+            },
+            getMisAnuncios: function() {
+                var urlKeeps = 'misAnuncios';
+                axios.get(urlKeeps).then(response => {
+                    this.servicios = response.data
+                });
+            },
             getVal: function(servicio, favoritos) {
                 var valor = 2;
                 if (this.ruta == '/servicios') {
@@ -111,6 +137,8 @@
         mounted() {
             //console.log('Servicios Component ready.')
             //console.log('ruta SERVICIOS: '+this.ruta)
+            
+                
         }
         
     }

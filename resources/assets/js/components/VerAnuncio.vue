@@ -77,12 +77,13 @@
 
 
 
-                    <a href="javascript:;" class="w3-button w3-orange w3-round-xlarge"  v-on:click="mostrar()">Contactar anunciante</a>
                     
-                    <ul id="lista_contacto" class="icons" style='display:none;' >
-                        <li><a href="" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                            <div v-if="servicios.fono">
-                        <li><a class="icon fa-phone"><span class="label">Instagram</span></a></li>  {{servicios.fono.contacto}}
+                    <ul id="lista_contacto" class="icons" >
+                        <div v-if="servicios">
+                            <li><a href="" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                        </div>
+                        <div v-if="servicios.fono">
+                            <li><a class="icon fa-phone"><span class="label">Instagram</span></a></li>  {{servicios.fono.contacto}}
                         </div>
                     </ul>
                 
@@ -215,11 +216,14 @@
             },
             comienza_filtrado: function(titulo, descripcion) {
 
-                titulo = this.filtrar(titulo);
-                document.getElementById('titulo').innerHTML = titulo; 
+                if (this.auth.tipo == "secretaria") {
+                    titulo = this.filtrar(titulo);
+                    document.getElementById('titulo').innerHTML = titulo; 
 
-                descripcion = this.filtrar(descripcion);
-                document.getElementById('descripcion').innerHTML = descripcion; 
+                    descripcion = this.filtrar(descripcion);
+                    document.getElementById('descripcion').innerHTML = descripcion; 
+                }
+                
             },
             filtrar: function(texto_no_filtrado) {
                 

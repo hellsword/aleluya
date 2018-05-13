@@ -242,8 +242,12 @@ class ServiciosController extends Controller
            
             if($tipoPago=='efectivo'){
                 $anuncio->forma_pago = 1;// 1 si es en efectivo 
-            }else{
+            }
+            else if($tipoPago=='tarjeta'){
                 $anuncio->forma_pago = 0; // 0 si es con tarjeta,lo dejaremos en 2 lo que significa que ya pago automaticamente
+            }
+            else if($tipoPago=='gratis'){
+                $anuncio->forma_pago = 9; // 9 si es plan gratuito
             }
             $anuncio->save(); 
 

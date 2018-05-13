@@ -13,12 +13,19 @@
 				<th></th>
 				<th>Titulo</th>
 				<th></th>
+				<th></th>
 			</thead>
 			<tr v-for="anuncio in anuncios.anuncios">
 				
 				<td>{{anuncio.id_anuncio}}</td>
 				<td><router-link  :to="{path:'/servicios/ver_anuncio', query: {idAnuncio: anuncio.id_anuncio}}" > <img :src="anuncio.foto" alt="" height="150" width="200" > </router-link></td>
 				<td>{{anuncio.titulo}}</td>
+				<td>
+					<div>
+						<br><font size=4 color="#00FFFF" face="Comic Sans MS,arial,verdana"> <br></font>
+						<router-link class="boton azul" :to="{path:'/servicios/ver_anuncio', query: {idAnuncio: anuncio.id_anuncio}}" > Ver anuncio </router-link>
+					</div>
+				</td>
 			
 				<td>
 					<div v-if="anuncio.forma_pago == '2'">
@@ -83,6 +90,7 @@
                 axios.put(url).then(response => {
 					this.errors = [];
 					toastr.success('Anuncio aceptado.');
+					this.getAnuncios();  
 				}).catch(error => {
 					this.errors = error.response.data;
 				});
