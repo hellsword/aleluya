@@ -1,8 +1,5 @@
 <template>
     <div class="9u pull-right">
-        <div v-if="ruta == '/servicios'" >
-            {{getDatos() }}
-        </div>
         
         <div v-for="servicio in servicios.servicios">
             {{getVal(servicio, servicios.favoritos)}}
@@ -133,6 +130,16 @@
                     valor = 3
                 this.val = valor;
             },
+        },
+        beforeMount: function () {
+            if(this.ruta == '/mis_anuncios'){
+                this.servicios = [];
+                this.getMisAnuncios();
+            }
+            if(this.ruta == '/servicios'){
+                this.servicios = [];
+                this.getServicios();
+            }
         },
         mounted() {
             //console.log('Servicios Component ready.')

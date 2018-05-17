@@ -54,6 +54,14 @@ const routes = [
         }
     },
     {
+        path: '/mis_anuncios',
+        components: {
+            nav: Nav,
+            aside_search: Aside,
+            servicios: Servicios
+        }
+    },
+    {
         path: '/servicios',
         components: {
             nav: Nav,

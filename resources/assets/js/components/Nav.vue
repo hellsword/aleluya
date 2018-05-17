@@ -65,7 +65,7 @@
                             <li><a href="/logout">Salir</a></li>
                           </ul>
                            <ul v-if="auth.tipo== 'cliente'" class="dropdown-menu">
-                            <li><a href="/mis_anuncios">Mis anuncios</a></li>
+                            <li> <router-link to="/mis_anuncios">Mis Anuncios</router-link> </li>
                             <li><a href="/favoritos">Favoritos</a></li>
                             <li><a href="/cupones">Subir Cupón</a></li>
                             <li class="divider"></li>

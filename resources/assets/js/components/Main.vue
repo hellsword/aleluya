@@ -1,15 +1,5 @@
 <template>
 <div>
-
-	<div id="geochart-colors" style="width: 700px; height: 433px;"></div>
-
-	<!-- Grafico (borrar despues) -->
-<line-chart :data="{'2017-01-01': 11, '2017-01-02': 6}"></line-chart>
-<bar-chart :data="[['Work', 32], ['Play', 1492]]"></bar-chart>
-<geo-chart region="CL" ></geo-chart>
-<timeline :data="[['Washington', '1789-04-29', '1797-03-03'], ['Adams', '1797-03-03', '1801-03-03']]"></timeline>
-
-
 	<!-- INICIO SECCION EXPERIMENTAL DE CARRUSEL -->
 	<section>
 		<!-- swiper -->
@@ -149,41 +139,9 @@
 				swiperSlide
 		},
     methods: {
-			cargaMapa: function() {
-							
-					google.charts.load('current', {
-						'packages':['geochart'],
-						// Note: you will need to get a mapsApiKey for your project.
-						// See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-						'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-					});
-					google.charts.setOnLoadCallback(drawRegionsMap);
-
-					function drawRegionsMap() {
-						var data = google.visualization.arrayToDataTable([
-							['Country',   'Anuncios'],
-							['Maule', 36], ['Tarapacá', 8], ['Magallanes', 12], ['Coquimbo', 24], ['Araucanía', 24],
-							['Ñuble', 5],
-						]);
-
-						var options = {
-							region: 'CL', // Africa
-							displayMode: 'regions',
-    					resolution: 'provinces',
-							colorAxis: {colors: ['#00853f', 'black', '#e31b23']},
-							backgroundColor: '#81d4fa',
-							datalessRegionColor: '#f8bbd0',
-							defaultColor: '#f5f5f5',
-						};
-
-						var chart = new google.visualization.GeoChart(document.getElementById('geochart-colors'));
-						chart.draw(data, options);
-					};
-			},
 		},
 		mounted() {
 				//console.log('Main Component ready.')
-				this.cargaMapa();
 		}
         
     }
