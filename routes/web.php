@@ -22,6 +22,7 @@ Route::get('/logout','Auth\LoginController@logout');
 Route::get('appFiltros','ServiciosController@filtros');
 Route::get('obtenerPalabras','DiccionarioController@obtenerPalabras');
 Route::get('detalleServicio/{id_anuncio}','ServiciosController@mostrar');
+Route::get('gestion','UserController@gestion');
 //Route::post('nuevoServicio','ServiciosController@store');
 
 //Transferencia de datos

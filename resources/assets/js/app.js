@@ -35,6 +35,7 @@ import Anuncios from './components/Secretaria/Anuncios.vue'
 import AsideSecretaria from './components/Aside/AsideSecretaria.vue'
 import ListaUsuarios from './components/ListaUsuarios.vue'
 import AgregarPalabra from './components/Diccionario/AgregarPalabra.vue'
+import Gestion from './components/Admin/Gestion.vue'
 //import Diccionario from './components/Diccionario/Diccionario.vue'
 
 // 2. Define algunas rutas
@@ -118,7 +119,15 @@ const routes = [
             agregarpalabra: AgregarPalabra
 
         }
-    }
+    },
+      {
+        path: '/gestion2',
+        components: {
+            nav: Nav,
+            gestion: Gestion
+
+        }
+    },
 
   ]
 

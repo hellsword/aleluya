@@ -50,7 +50,7 @@
                                 <p>{{ auth.nombre }}</p>
                             </a>
                         <ul v-if="auth.tipo == 'admin'" class="dropdown-menu">
-                            <li><a href="/usuarios/gestion">Gestion</a></li>
+                             <li><router-link to="/gestion2">Gestion</router-link></li>
                             <li><a href="/usuarios/adm_categorias">Administrar categorías</a></li>
                             <li><router-link to="/listausuarios">Lista Usuarios</router-link></li>
                             <li><a href="/usuarios/create">Crear Usuarios</a></li>

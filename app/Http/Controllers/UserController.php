@@ -194,12 +194,12 @@ class UserController extends Controller
        $query2=trim($request->get('searchText2'));
        $fechaMin=trim($request->get('fechaMin'));
        $fechaMax=trim($request->get('fechaMax'));
-
+/*
        if ($fechaMin > $fechaMax) {
           alert()->error('La fecha inicial no puede ser mayor a la fecha final')->persistent('Cerrar');
           return Redirect::to('usuarios/gestion');
        }
-
+*/
        $secretarias = DB::table('secretaria')
             ->join ('users', 'users.id', '=' , 'id_secretaria')
             ->select('secretaria.id_secretaria as id_secretaria',
@@ -227,6 +227,7 @@ class UserController extends Controller
              ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
              ->where('o.id_secretaria','LIKE', '%'.$query.'%')
              ->where('a.condicion','LIKE', '%'.$query2.'%')
+              ->where('a.condicion','=', '1')
              ->select('r.REGION_NOMBRE',DB::raw('count(a.region) as cantidad'),DB::raw('sum(total) as total'))
              ->groupBy('r.REGION_NOMBRE')
              ->get();
@@ -234,7 +235,7 @@ class UserController extends Controller
         
         //DB::table('user_visits')->groupBy('user_id')->count();
 
-      return view('usuarios.gestion', ["secretarias" => $secretarias,"region"=>$region]);
+      return ["secretarias" => $secretarias,"region"=>$region];
 
 
     }
