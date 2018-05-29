@@ -1,4 +1,4 @@
-<template>
+             <template>
  
 
 <div>
@@ -20,17 +20,30 @@
                 </tr>
    
             </table>
+
+
+  
 <div v-if="datos.region">
               {{cargaGrafico(datos.region)}}
-              <column-chart :data="chartData"></column-chart>
+              <column-chart xtitle="Regiones" ytitle="Cantidad" download="true" label="Cantidad"
+              width="800px" height="500px" :data="chartData">
+                
+              </column-chart>
         </div>
 
 
          
 <div v-if="datos.region">
               {{cargaGrafico2(datos.region)}}
-              <line-chart :data="chartData2"></line-chart>
+              <line-chart prefix="$"  width="800px" height="500px" 
+              xtitle="Regiones" ytitle="Monto Total" label="Monto" :data="chartData2"></line-chart>
         </div>
+<br><br><br>
+        <div v-if="datos.fechas">
+              {{cargaGrafico3(datos.fechas)}}
+              <timeline  width="800px" height="500px" :data="chartData3"></timeline >
+        </div>
+
 </div>
 
 </template>
@@ -48,7 +61,8 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
             return {
                 datos : [],
                 chartData : [],
-                chartData2 : []
+                chartData2 : [],
+                chartData3 : []
 
                            
             }
@@ -88,6 +102,19 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                 for(var i = region.length-1; i >= 0; i--){
                      
                  this.chartData2[i] =[region[i].REGION_NOMBRE,region[i].total];
+               
+                 }
+
+                    
+            },
+   
+
+             cargaGrafico3: function(fechas) {
+                 
+                
+                for(var i = fechas.length-1; i >= 0; i--){
+                     
+                 this.chartData3[i] =[fechas[i].titulo,fechas[i].fechaI,fechas[i].fechaVe];
                
                  }
 

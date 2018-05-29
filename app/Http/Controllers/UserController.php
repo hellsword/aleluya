@@ -231,11 +231,31 @@ class UserController extends Controller
              ->select('r.REGION_NOMBRE',DB::raw('count(a.region) as cantidad'),DB::raw('sum(total) as total'))
              ->groupBy('r.REGION_NOMBRE')
              ->get();
+
+              $fechaC=DB::table('anuncio as a')
+             ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
+             ->where('a.condicion','=', '1')
+             ->select(DB::raw('MONTH(o.fecha) as meses'),DB::raw('count(MONTH(o.fecha)) as total'))
+             ->groupBy('meses')
+             ->get();
+
+              $fechaV=DB::table('anuncio as a')
+             ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
+             ->where('a.condicion','=', '1')
+             ->select(DB::raw('MONTH(o.fecha_venc) as mes'),DB::raw('count(MONTH(o.fecha_venc)) as total'))
+             ->groupBy('mes')
+             ->get();
+            
+             $fechas=DB::table('anuncio as a')
+             ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
+             ->where('a.condicion','=', '1')
+             ->select('o.fecha_venc as fechaVe','o.fecha as fechaI','a.titulo as titulo')
+             ->get();
        }
         
         //DB::table('user_visits')->groupBy('user_id')->count();
 
-      return ["secretarias" => $secretarias,"region"=>$region];
+      return ["secretarias" => $secretarias,"region"=>$region, "fechaC"=>$fechaC,"fechaV"=>$fechaV,"fechas"=>$fechas];
 
 
     }
