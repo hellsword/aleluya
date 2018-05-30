@@ -15,7 +15,7 @@
                     
                 <div class="8u">
                     <section>
-                        <a href="#" style="text-decoration:none" ><h3 style="color:#00BFFF;">{{servicio.titulo}}</h3></a>
+                        <router-link  :to="{path:'/servicios/ver_anuncio', query: {idAnuncio: servicio.id_anuncio}}" style="text-decoration:none" ><h3 style="color:#00BFFF;">{{servicio.titulo}}</h3></router-link>
                     </section>
                 </div>
 
