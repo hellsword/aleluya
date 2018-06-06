@@ -96,11 +96,13 @@
 							<!--Componentes laterales -->
               <router-view name="aside_search" :filtros=filtros></router-view>
 							<router-view name="aside_secretaria" :auth=servicios.auth></router-view>
+							<router-view name="aside_fechas" :filtro2=filtro2></router-view>
 							<router-view name="anuncios"></router-view>
 							<router-view name="listausuarios" :auth=servicios.auth></router-view>
 							<router-view name="agregarpalabra"></router-view>
               <router-view name="servicios" :ruta=getPath() :auth=servicios.auth ></router-view>
                <router-view name="gestion" :ruta=getPath() :auth=servicios.auth ></router-view>
+
 
           </div>
         </div>

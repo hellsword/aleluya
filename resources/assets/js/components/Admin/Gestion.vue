@@ -4,6 +4,16 @@
 <div>
 
 
+  <section>
+        
+            <h5>Personalice su busqueda por Fechas: </h5>
+            <h6>Fecha Inicio</h6>  
+    
+            <select type="text" id="fechaI" name="fechaI">
+                <option v-for="fechasI in datos.fechas" :value=fechasI.fechaI>{{fechasI.fechaI}}</option>
+            </select> 
+        <a class="btn btn-primary" v-on:click.prevent="Register">filtrar</a>
+</section>
 
 <table class="table table-striped table-bordered table-condensed table-hover">
                <thead>
@@ -22,8 +32,11 @@
             </table>
 
 
+
   
 <div v-if="datos.region">
+
+ 
               {{cargaGrafico(datos.region)}}
               <column-chart xtitle="Regiones" ytitle="Cantidad" download="true" label="Cantidad"
               width="800px" height="500px" :data="chartData">
@@ -50,6 +63,7 @@
 
 <script>
 
+
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
     import Vue from 'vue'
     import VueChartkick from 'vue-chartkick'
@@ -62,8 +76,8 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                 datos : [],
                 chartData : [],
                 chartData2 : [],
-                chartData3 : []
-
+                chartData3 : [],
+                fechaI : ''
                            
             }
         },
@@ -80,9 +94,21 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                 });
             },
 
-
+            Register: function() {
+                var url = 'gestion';
+                axios.post(url, {
+                    fechaI: this.fechaI
+                    //FechaV: this.FechaV,
+                 
+                }).then(response => {
+                    //this.fechaI = '1';
+                    this.getDatos();
+                    //this.password = '2';
+          
+                }).catch(error => {
             
-                    
+                });
+            },
 
                  cargaGrafico: function(region) {
                  
@@ -122,8 +148,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
             },
        },
           
-       
-        mounted() {
+    mounted() {
              this.getDatos();
 
         

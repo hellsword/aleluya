@@ -174,7 +174,24 @@ class ServiciosController extends Controller
         return ['regiones'=> $regiones, 'categorias'=> $categorias, 'sub_categorias'=> $sub_categorias, 'categoria_vehiculos'=> $categoria_vehiculos, 'provincias'=> $provincias, 'comunas'=> $comunas];
     }
 
+public function filtros2(){
+        
+        $regiones=DB::table('region')->get();
 
+        $categorias=DB::table('categorias')->get();
+
+        $orden=DB::table('orden')->get();
+
+        $sub_categorias=DB::table('sub_categorias')->get();
+
+        $categoria_vehiculos=DB::table('categoria_vehiculo')->get();
+
+        $provincias = DB::table('provincia')->get();
+
+        $comunas = DB::table('comuna')->get();
+
+        return ['regiones'=> $regiones, 'categorias'=> $categorias, 'sub_categorias'=> $sub_categorias, 'categoria_vehiculos'=> $categoria_vehiculos, 'provincias'=> $provincias, 'comunas'=> $comunas,'orden'=> $orden];
+    }
     
 
     public function create(){

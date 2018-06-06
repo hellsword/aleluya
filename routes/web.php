@@ -20,9 +20,19 @@ Route::get('/', function () {
 Route::get('/logout','Auth\LoginController@logout');
 
 Route::get('appFiltros','ServiciosController@filtros');
+Route::get('appFiltros2','ServiciosController@filtros2');
+
+
 Route::get('obtenerPalabras','DiccionarioController@obtenerPalabras');
 Route::get('detalleServicio/{id_anuncio}','ServiciosController@mostrar');
+
+
 Route::get('gestion','UserController@gestion');
+
+
+
+//Route::resource('gestion3','UserController@gestion4');
+
 //Route::post('nuevoServicio','ServiciosController@store');
 
 //Transferencia de datos
