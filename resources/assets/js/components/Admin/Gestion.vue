@@ -161,7 +161,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     parametro4: this.fechaV2
                 },}).then(response => {
                     this.datos2 = response.data
-                    this.LimpiarGrafico2(this.datos2.region);
+                    this.LimpiarGrafico2();
                     this.cargaGrafico2(this.datos2.region)
                    
                 });
@@ -177,7 +177,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     parametro6: this.fechaV3
                 },}).then(response => {
                     this.datos3 = response.data
-                    this.LimpiarGrafico3(this.datos3.region);
+                    this.LimpiarGrafico3();
                     this.cargaGrafico3(this.datos3.region)
                    
                 });
@@ -202,13 +202,13 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
      
             },
 
-             LimpiarGrafico2: function(region) {
+             LimpiarGrafico2: function() {
                  
            this.chartData2=[]; 
      
             },
 
-            LimpiarGrafico3: function(region) {
+            LimpiarGrafico3: function() {
                  
            this.chartData3=[]; 
      
