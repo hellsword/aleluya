@@ -3,16 +3,22 @@
 
 <div>
 
-
+{{datos}}
   <section>
+      <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos">
         
             <h5>Personalice su busqueda por Fechas: </h5>
             <h6>Fecha Inicio</h6>  
-    
+            
+            <input type="text" id="fechaI" name="fechaI" value="2018-05-05" v-model="fechaI">
+
+<!--
             <select type="text" id="fechaI" name="fechaI">
-                <option v-for="fechasI in datos.fechas" :value=fechasI.fechaI>{{fechasI.fechaI}}</option>
+                <option v-for="fechasI in datos.fechas" :value="fechasI.fechaI">{{fechasI.fechaI}}</option>
             </select> 
-        <a class="btn btn-primary" v-on:click.prevent="Register">filtrar</a>
+            -->
+        <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
+      </form>
 </section>
 
 <table class="table table-striped table-bordered table-condensed table-hover">
@@ -86,14 +92,19 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
         },
         methods: {
             getDatos: function() {
-                    
+                    console.log("mandando mensaje: "+this.fechaI)
                 var urlKeeps = 'gestion';
-                axios.get(urlKeeps).then(response => {
+                axios.get(urlKeeps, {
+                params: {
+                    parametro1: this.fechaI,
+                    parametro2: 'flaco gay',
+                    parametro3: 'toranzo trolazo'
+                },}).then(response => {
                     this.datos = response.data
                    
                 });
             },
-
+/*
             Register: function() {
                 var url = 'gestion';
                 axios.post(url, {
@@ -109,7 +120,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
             
                 });
             },
-
+*/
                  cargaGrafico: function(region) {
                  
                 

@@ -190,6 +190,10 @@ class UserController extends Controller
 
     public function gestion(Request $request){
 
+      $parametro1=trim($request->get('parametro1'));
+      $parametro2=trim($request->get('parametro2'));
+      $parametro3=trim($request->get('parametro3'));
+
       $query=trim($request->get('searchText'));
        $query2=trim($request->get('searchText2'));
        $fechaMin=trim($request->get('fechaMin'));
@@ -279,7 +283,7 @@ class UserController extends Controller
         
         //DB::table('user_visits')->groupBy('user_id')->count();
 
-      return ["secretarias" => $secretarias,"region"=>$region, "fechaC"=>$fechaC,"fechaV"=>$fechaV,"fechas"=>$fechas];
+      return ["secretarias" => $secretarias,"region"=>$region, "fechaC"=>$fechaC,"fechaV"=>$fechaV,"fechas"=>$fechas,"parametro1"=>$parametro1,"parametro2"=>$parametro2,"parametro3"=>$parametro3];
 
 
     }
