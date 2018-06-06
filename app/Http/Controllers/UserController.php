@@ -196,6 +196,9 @@ class UserController extends Controller
       $parametro3=trim($request->get('parametro3'));
       $parametro4=trim($request->get('parametro4'));
 
+      $parametro5=trim($request->get('parametro5'));
+      $parametro6=trim($request->get('parametro6'));
+
 
 
       $query=trim($request->get('searchText'));
@@ -217,7 +220,7 @@ class UserController extends Controller
                     )
             ->get();
 
-        if ($parametro1 != '') {
+        if ($parametro1 != '' || $parametro2 != ''  ) {
             $region=DB::table('anuncio as a')
              ->join ('region as r', 'r.REGION_ID', '=' , 'a.region')
              ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
@@ -248,7 +251,7 @@ class UserController extends Controller
              ->select('o.fecha_venc as fechaVe','o.fecha as fechaI','a.titulo as titulo')
              ->get();
         }   
-        else if ($parametro3 != ''){
+        else if ($parametro3 != ''|| $parametro4 != ''){
             $region=DB::table('anuncio as a')
              ->join ('region as r', 'r.REGION_ID', '=' , 'a.region')
              ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
@@ -276,6 +279,40 @@ class UserController extends Controller
                   $fechas=DB::table('anuncio as a')
              ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
              ->where('a.condicion','=', '1')     
+             ->select('o.fecha_venc as fechaVe','o.fecha as fechaI','a.titulo as titulo')
+             ->get();
+           }else if ($parametro5 != '' || $parametro6 != ''){
+            $region=DB::table('anuncio as a')
+             ->join ('region as r', 'r.REGION_ID', '=' , 'a.region')
+             ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
+             ->where('o.fecha','>=', $parametro5)
+              ->where('o.fecha_venc','<=',$parametro6) 
+             ->where('a.condicion','=', '1')
+             ->select('r.REGION_NOMBRE',DB::raw('count(a.region) as cantidad'),DB::raw('sum(total) as total'))
+             ->groupBy('r.REGION_NOMBRE')
+             ->get();
+
+              $fechaC=DB::table('anuncio as a')
+             ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
+             ->where('a.condicion','=', '1')
+             ->where('o.fecha','>=', $parametro5)
+             ->select(DB::raw('MONTH(o.fecha) as meses'),DB::raw('count(MONTH(o.fecha)) as total'))
+             ->groupBy('meses')
+             ->get();
+
+              $fechaV=DB::table('anuncio as a')
+             ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
+             ->where('a.condicion','=', '1')
+             ->where('o.fecha_venc','<=',$parametro6) 
+             ->select(DB::raw('MONTH(o.fecha_venc) as mes'),DB::raw('count(MONTH(o.fecha_venc)) as total'))
+             ->groupBy('mes')
+             ->get();
+
+              $fechas=DB::table('anuncio as a')
+             ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
+             ->where('a.condicion','=', '1')
+              ->where('o.fecha','>=', $parametro5)
+              ->where('o.fecha_venc','<=',$parametro6)      
              ->select('o.fecha_venc as fechaVe','o.fecha as fechaI','a.titulo as titulo')
              ->get();
            }else{
@@ -311,7 +348,8 @@ class UserController extends Controller
         
         //DB::table('user_visits')->groupBy('user_id')->count();
 
-      return ["secretarias" => $secretarias,"region"=>$region, "fechaC"=>$fechaC,"fechaV"=>$fechaV,"fechas"=>$fechas,"parametro1"=>$parametro1,"parametro2"=>$parametro2,"parametro3"=>$parametro3,"parametro4"=>$parametro4];
+      return ["secretarias" => $secretarias,"region"=>$region, "fechaC"=>$fechaC,"fechaV"=>$fechaV,"fechas"=>$fechas,"parametro1"=>$parametro1,"parametro2"=>$parametro2,"parametro3"=>$parametro3,"parametro4"=>$parametro4,
+      "parametro5"=>$parametro5,"parametro6"=>$parametro6];
 
 
   }

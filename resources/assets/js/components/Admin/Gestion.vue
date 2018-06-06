@@ -2,6 +2,23 @@
  
 
 <div>
+<table class="table table-striped table-bordered table-condensed table-hover">
+               <thead>
+                    <th>Regiones</th>
+                    <th>Cantidad de Anuncios</th>
+                    <th>Monto Total</th>
+                 
+                </thead>
+            
+                <tr v-for="regiones in datos.region"> 
+                    <td>{{regiones.REGION_NOMBRE}}</td>
+                    <td>{{regiones.cantidad}}</td>
+                    <td>{{regiones.total}}</td>
+                </tr>
+
+   
+            </table>
+
 
   <section>
       <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos" 
@@ -18,28 +35,12 @@
           <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
 
       </form>
+
+        
 </section>
- {{chartData}}
-<table class="table table-striped table-bordered table-condensed table-hover">
-               <thead>
-                    <th>Regiones</th>
-                    <th>Cantidad de Anuncios</th>
-                    <th>Monto Total</th>
-                 
-                </thead>
-            
-                <tr v-for="regiones in datos.region"> 
-                    <td>{{regiones.REGION_NOMBRE}}</td>
-                    <td>{{regiones.cantidad}}</td>
-                    <td>{{regiones.total}}</td>
-                </tr>
-   
-            </table>
 
+  <div v-if="datos.region">
 
-<div v-if="datos.region">
-
- {{datos.region}}
               {{cargaGrafico(datos.region)}}
               <column-chart xtitle="Regiones" ytitle="Cantidad" download="true" label="Cantidad"
               width="800px" height="500px" :data="chartData">
@@ -48,7 +49,8 @@
 
 
         </div>
-   
+
+
 
   <section>
       <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos2">
@@ -61,7 +63,7 @@
             
             <input type="text" id="fechaV2" name="fechaV2" value="" v-model="fechaV2">
         
-          <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar2">
+          <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
 
       </form>
 </section>
@@ -73,8 +75,29 @@
               xtitle="Regiones" ytitle="Monto Total" label="Monto" :data="chartData2"></line-chart>
         </div>
 <br><br><br>
-        <div v-if="datos.fechas">
-              {{cargaGrafico3(datos.fechas)}}
+
+
+
+
+  <section>
+      <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos3">
+        
+            <h5>Filtro por Fechas Grafico 3: </h5>
+            <h6>Fecha Inicio</h6>  
+            
+            <input type="text" id="fechaI3" name="fechaI3" value="" v-model="fechaI3">
+            <h6>Fecha Vencimiento</h6>  
+            
+            <input type="text" id="fechaV3" name="fechaV3" value="" v-model="fechaV3">
+        
+          <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
+
+      </form>
+</section>
+
+
+        <div v-if="datos3.fechas">
+              {{cargaGrafico3(datos3.fechas)}}
               <timeline  width="800px" height="500px" :data="chartData3"></timeline >
         </div>
 
@@ -96,6 +119,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
             return {
                 datos : [],
                 datos2 : [],
+                datos3 : [],
                 chartData : [],
                 chartData2 : [],
                 chartData3 : [],
@@ -103,7 +127,9 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                 fechaI : '',
                 fechaV : '',
                 fechaI2 : '',
-                fechaV2 : ''
+                fechaV2 : '',
+                fechaI3 : '',
+                fechaV3 : ''
                            
             }
         },
@@ -120,7 +146,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     parametro2: this.fechaV
                 },}).then(response => {
                     this.datos = response.data;
-                   
+                    this.LimpiarGrafico();
                     this.cargaGrafico(this.datos.region);
 
                 });
@@ -135,8 +161,24 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     parametro4: this.fechaV2
                 },}).then(response => {
                     this.datos2 = response.data
+                    this.LimpiarGrafico2(this.datos2.region);
                     this.cargaGrafico2(this.datos2.region)
+                   
+                });
+            },
 
+//cargamos los datos para el Tercer grafico
+             getDatos3: function() {
+                    console.log("mandando mensaje: "+this.fechaI)
+                var urlKeeps = 'gestion';
+                axios.get(urlKeeps, {
+                params: {
+                    parametro5: this.fechaI3,
+                    parametro6: this.fechaV3
+                },}).then(response => {
+                    this.datos3 = response.data
+                    this.LimpiarGrafico3(this.datos3.region);
+                    this.cargaGrafico3(this.datos3.region)
                    
                 });
             },
@@ -153,7 +195,26 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     
             },
 
-       
+            //Metodos para limpiar los arreglas que tienen los datos de los graficos
+            LimpiarGrafico: function() {
+                      
+               this.chartData=[];   
+     
+            },
+
+             LimpiarGrafico2: function(region) {
+                 
+           this.chartData2=[]; 
+     
+            },
+
+            LimpiarGrafico3: function(region) {
+                 
+           this.chartData3=[]; 
+     
+            },
+
+
 
              cargaGrafico2: function(region) {
                  
@@ -183,6 +244,8 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
           
     mounted() {
             this.getDatos();
+            this.getDatos2();
+            this.getDatos3();
 
         
         }
