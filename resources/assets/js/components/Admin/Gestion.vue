@@ -3,24 +3,23 @@
 
 <div>
 
-{{datos}}
   <section>
-      <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos">
+      <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos" 
+      >
         
-            <h5>Personalice su busqueda por Fechas: </h5>
+            <h5>Filtro por Fechas Grafico 1: </h5>
             <h6>Fecha Inicio</h6>  
             
-            <input type="text" id="fechaI" name="fechaI" value="2018-05-05" v-model="fechaI">
+            <input type="text" id="fechaI" name="fechaI" value="" v-model="fechaI">
+            <h6>Fecha Vencimiento</h6>  
+            
+            <input type="text" id="fechaV" name="fechaV" value="" v-model="fechaV">
+        
+          <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
 
-<!--
-            <select type="text" id="fechaI" name="fechaI">
-                <option v-for="fechasI in datos.fechas" :value="fechasI.fechaI">{{fechasI.fechaI}}</option>
-            </select> 
-            -->
-        <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
       </form>
 </section>
-
+ {{chartData}}
 <table class="table table-striped table-bordered table-condensed table-hover">
                <thead>
                     <th>Regiones</th>
@@ -38,22 +37,38 @@
             </table>
 
 
-
-  
 <div v-if="datos.region">
 
- 
+ {{datos.region}}
               {{cargaGrafico(datos.region)}}
               <column-chart xtitle="Regiones" ytitle="Cantidad" download="true" label="Cantidad"
               width="800px" height="500px" :data="chartData">
                 
               </column-chart>
-        </div>
 
+
+        </div>
+   
+
+  <section>
+      <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos2">
+        
+            <h5>Filtro por Fechas Grafico 2: </h5>
+            <h6>Fecha Inicio</h6>  
+            
+            <input type="text" id="fechaI2" name="fechaI2" value="" v-model="fechaI2">
+            <h6>Fecha Vencimiento</h6>  
+            
+            <input type="text" id="fechaV2" name="fechaV2" value="" v-model="fechaV2">
+        
+          <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar2">
+
+      </form>
+</section>
 
          
-<div v-if="datos.region">
-              {{cargaGrafico2(datos.region)}}
+<div v-if="datos2.region">
+              {{cargaGrafico2(datos2.region)}}
               <line-chart prefix="$"  width="800px" height="500px" 
               xtitle="Regiones" ytitle="Monto Total" label="Monto" :data="chartData2"></line-chart>
         </div>
@@ -80,10 +95,15 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
         data: function() {
             return {
                 datos : [],
+                datos2 : [],
                 chartData : [],
                 chartData2 : [],
                 chartData3 : [],
-                fechaI : ''
+                chartData4 : [],
+                fechaI : '',
+                fechaV : '',
+                fechaI2 : '',
+                fechaV2 : ''
                            
             }
         },
@@ -97,33 +117,33 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                 axios.get(urlKeeps, {
                 params: {
                     parametro1: this.fechaI,
-                    parametro2: 'flaco gay',
-                    parametro3: 'toranzo trolazo'
+                    parametro2: this.fechaV
                 },}).then(response => {
-                    this.datos = response.data
+                    this.datos = response.data;
+                   
+                    this.cargaGrafico(this.datos.region);
+
+                });
+            },
+//cargamos los datos para el segundo grafico
+              getDatos2: function() {
+                    console.log("mandando mensaje: "+this.fechaI)
+                var urlKeeps = 'gestion';
+                axios.get(urlKeeps, {
+                params: {
+                    parametro3: this.fechaI2,
+                    parametro4: this.fechaV2
+                },}).then(response => {
+                    this.datos2 = response.data
+                    this.cargaGrafico2(this.datos2.region)
+
                    
                 });
             },
-/*
-            Register: function() {
-                var url = 'gestion';
-                axios.post(url, {
-                    fechaI: this.fechaI
-                    //FechaV: this.FechaV,
-                 
-                }).then(response => {
-                    //this.fechaI = '1';
-                    this.getDatos();
-                    //this.password = '2';
-          
-                }).catch(error => {
-            
-                });
-            },
-*/
+
                  cargaGrafico: function(region) {
                  
-                
+           
                 for(var i = region.length-1; i >= 0; i--){
                      
                  this.chartData[i] =[region[i].REGION_NOMBRE,region[i].cantidad];
@@ -132,6 +152,8 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
                     
             },
+
+       
 
              cargaGrafico2: function(region) {
                  
@@ -160,7 +182,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
        },
           
     mounted() {
-             this.getDatos();
+            this.getDatos();
 
         
         }
