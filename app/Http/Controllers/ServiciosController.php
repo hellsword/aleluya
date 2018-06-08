@@ -124,10 +124,12 @@ class ServiciosController extends Controller
             ->join ('region', 'region.REGION_ID', '=' , 'a.region')
             ->join ('provincia', 'provincia.PROVINCIA_ID', '=' , 'a.provincia')
             ->join ('comuna', 'comuna.COMUNA_ID', '=' , 'a.comuna')
+            ->join ('forma_pago as fo', 'fo.num_pago', '=' , 'o.num_pago')
             ->where('a.condicion', '=', '1')
             ->where('f.id_foto', '=', '0')
             //condicion para mostrar solo los avisos q esten vijentes 
             ->where('o.fecha_venc', '>=', $fecha_actual)
+            //->where('o.fecha_venc', '>=', $fecha_actual)
             ->select('o.id_cliente as id_cliente',
                     'a.id_anuncio as id_anuncio',
                     'a.titulo as titulo',
@@ -141,7 +143,9 @@ class ServiciosController extends Controller
                     'u.apellido as apellido',
                     'f.foto as foto',
                     'o.fecha as fecha'
-                    )->get();
+                    )
+                    ->orderBy('fo.modo', 'desc')
+                    ->get();
 
             
 

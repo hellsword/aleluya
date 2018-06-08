@@ -104,6 +104,18 @@
                 </p>
             </div>
 
+
+             <div v-if="modo_pago == 'gratis'" >
+                <p>
+                    <label>Duración del anuncio (meses): </label>
+                    <span class="field"><input type="text" v-model="tiempo" id="tiempo" name="tiempo" class="input-small input-spinner" v-on:change="calcula_total" required="" placeholder="4" v-on:keypress="isNumber" /></span>
+                </p>
+                <p>
+                    <label>Total: </label>
+                    <span class="field"><input type="text" id="total" name="total" class="input-xxlarge" value="" readonly/></span>
+                </p>
+            </div>
+
             <!-- <button class="button is-primary" v-if="modo_pago == 'efectivo'" > Pagar </button> <br>  -->
             <br>
 

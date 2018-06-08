@@ -27,10 +27,10 @@
             <h5>Filtro por Fechas Grafico 1: </h5>
             <h6>Fecha Inicio</h6>  
             
-            <input type="text" id="fechaI" name="fechaI" value="" v-model="fechaI">
+            <input type="text" id="fechaI" name="fechaI" value="" v-model="fechaI" required>
             <h6>Fecha Vencimiento</h6>  
             
-            <input type="text" id="fechaV" name="fechaV" value="" v-model="fechaV">
+            <input type="text" id="fechaV" name="fechaV" value="" v-model="fechaV" required>
         
           <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
 
@@ -58,10 +58,10 @@
             <h5>Filtro por Fechas Grafico 2: </h5>
             <h6>Fecha Inicio</h6>  
             
-            <input type="text" id="fechaI2" name="fechaI2" value="" v-model="fechaI2">
+            <input type="text" id="fechaI2" name="fechaI2" value="" v-model="fechaI2" required>
             <h6>Fecha Vencimiento</h6>  
             
-            <input type="text" id="fechaV2" name="fechaV2" value="" v-model="fechaV2">
+            <input type="text" id="fechaV2" name="fechaV2" value="" v-model="fechaV2" required>
         
           <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
 
@@ -85,10 +85,10 @@
             <h5>Filtro por Fechas Grafico 3: </h5>
             <h6>Fecha Inicio</h6>  
             
-            <input type="text" id="fechaI3" name="fechaI3" value="" v-model="fechaI3">
+            <input type="text" id="fechaI3" name="fechaI3" value="" v-model="fechaI3" required>
             <h6>Fecha Vencimiento</h6>  
             
-            <input type="text" id="fechaV3" name="fechaV3" value="" v-model="fechaV3">
+            <input type="text" id="fechaV3" name="fechaV3" value="" v-model="fechaV3" required>
         
           <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
 
@@ -148,6 +148,10 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     this.datos = response.data;
                     this.LimpiarGrafico();
                     this.cargaGrafico(this.datos.region);
+                    //revisa si existe registro en el array 
+                    if(this.datos.region.length==0){
+                         toastr.error('No Hay Registro para esas Fecha');
+                         }
 
                 });
             },
@@ -163,7 +167,10 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     this.datos2 = response.data
                     this.LimpiarGrafico2();
                     this.cargaGrafico2(this.datos2.region)
-                   
+                  //revisa si existe registro en el array 
+                    if(this.datos2.region.length==0){
+                         toastr.error('No Hay Registro para esas Fecha');
+                         }
                 });
             },
 
@@ -179,11 +186,14 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     this.datos3 = response.data
                     this.LimpiarGrafico3();
                     this.cargaGrafico3(this.datos3.region)
-                   
+                   //revisa si existe registro en el array 
+                    if(this.datos3.region.length==0){
+                         toastr.error('No Hay Registro para esas Fecha');
+                         }
                 });
             },
 
-                 cargaGrafico: function(region) {
+                cargaGrafico: function(region) {
                  
            
                 for(var i = region.length-1; i >= 0; i--){
@@ -191,54 +201,41 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                  this.chartData[i] =[region[i].REGION_NOMBRE,region[i].cantidad];
                
                  }
-
+               
                     
             },
 
             //Metodos para limpiar los arreglas que tienen los datos de los graficos
             LimpiarGrafico: function() {
-                      
-               this.chartData=[];   
-     
+                this.chartData=[];   
             },
-
-             LimpiarGrafico2: function() {
-                 
-           this.chartData2=[]; 
-     
+            
+            LimpiarGrafico2: function() {
+                this.chartData2=[]; 
             },
 
             LimpiarGrafico3: function() {
-                 
-           this.chartData3=[]; 
-     
+             this.chartData3=[]; 
             },
 
-
-
-             cargaGrafico2: function(region) {
-                 
-                
+              cargaGrafico2: function(region) {
                 for(var i = region.length-1; i >= 0; i--){
                      
-                 this.chartData2[i] =[region[i].REGION_NOMBRE,region[i].total];
+                this.chartData2[i] =[region[i].REGION_NOMBRE,region[i].total];
                
-                 }
-
+                }
                     
             },
    
 
-             cargaGrafico3: function(fechas) {
+            cargaGrafico3: function(fechas) {
                  
-                
-                for(var i = fechas.length-1; i >= 0; i--){
+            for(var i = fechas.length-1; i >= 0; i--){
                      
-                 this.chartData3[i] =[fechas[i].titulo,fechas[i].fechaI,fechas[i].fechaVe];
+            this.chartData3[i] =[fechas[i].titulo,fechas[i].fechaI,fechas[i].fechaVe];
                
-                 }
-
-                    
+                }
+     
             },
        },
           
