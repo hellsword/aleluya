@@ -1,28 +1,38 @@
-             <template>
- 
+<template>
 
 <div>
-<table class="table table-striped table-bordered table-condensed table-hover">
-               <thead>
-                    <th>Regiones</th>
-                    <th>Cantidad de Anuncios</th>
-                    <th>Monto Total</th>
-                 
-                </thead>
-            
-                <tr v-for="regiones in datos.region"> 
-                    <td>{{regiones.REGION_NOMBRE}}</td>
-                    <td>{{regiones.cantidad}}</td>
-                    <td>{{regiones.total}}</td>
-                </tr>
 
-   
-            </table>
+    <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos" >
+            <h6>Filtrar por secretaria</h6>  
+            <select class="form-control" id="id_secretaria" name="id_secretaria" v-model="id_secre">
+                <option :value=null selected>TODAS</option>
+                <option v-for="secretaria in datos.secretarias" :value=secretaria.id_secretaria>{{secretaria.nombre}} {{secretaria.apellido}}</option>
+            </select> 
+        
+          <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
+
+      </form>
+
+    <table class="table table-striped table-bordered table-condensed table-hover">
+        <thead>
+            <th>Regiones</th>
+            <th>Cantidad de Anuncios</th>
+            <th>Monto Total</th>
+            
+        </thead>
+    
+        <tr v-for="regiones in datos.region"> 
+            <td>{{regiones.REGION_NOMBRE}}</td>
+            <td>{{regiones.cantidad}}</td>
+            <td>{{regiones.total}}</td>
+        </tr>
+
+
+    </table>
 
 
   <section>
-      <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos" 
-      >
+      <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos" >
         
             <h5>Filtro por Fechas Grafico 1: </h5>
             <h6>Fecha Inicio</h6>  
@@ -129,7 +139,8 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                 fechaI2 : '',
                 fechaV2 : '',
                 fechaI3 : '',
-                fechaV3 : ''
+                fechaV3 : '',
+                id_secre : ''
                            
             }
         },
@@ -143,14 +154,15 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                 axios.get(urlKeeps, {
                 params: {
                     parametro1: this.fechaI,
-                    parametro2: this.fechaV
+                    parametro2: this.fechaV,
+                    parametro_secre: this.id_secre
                 },}).then(response => {
                     this.datos = response.data;
                     this.LimpiarGrafico();
                     this.cargaGrafico(this.datos.region);
                     //revisa si existe registro en el array 
                     if(this.datos.region.length==0){
-                         toastr.error('No Hay Registro para esas Fecha');
+                         toastr.error('No Hay Registros para esas Fechas');
                          }
 
                 });
@@ -169,7 +181,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     this.cargaGrafico2(this.datos2.region)
                   //revisa si existe registro en el array 
                     if(this.datos2.region.length==0){
-                         toastr.error('No Hay Registro para esas Fecha');
+                         toastr.error('No Hay Registros para esas Fechas');
                          }
                 });
             },
@@ -188,7 +200,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     this.cargaGrafico3(this.datos3.region)
                    //revisa si existe registro en el array 
                     if(this.datos3.region.length==0){
-                         toastr.error('No Hay Registro para esas Fecha');
+                         toastr.error('No Hay Registros para esas Fechas');
                          }
                 });
             },

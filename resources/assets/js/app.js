@@ -33,11 +33,10 @@ import NuevoServicio from './components/NuevoServicio/NuevoServicio.vue'
 import VerAnuncio from './components/VerAnuncio.vue'
 import Anuncios from './components/Secretaria/Anuncios.vue'
 import AsideSecretaria from './components/Aside/AsideSecretaria.vue'
-//import AsideSearchFechas from './components/Aside/AsideSearchFechas.vue'
 import ListaUsuarios from './components/ListaUsuarios.vue'
 import AgregarPalabra from './components/Diccionario/AgregarPalabra.vue'
 import Gestion from './components/Admin/Gestion.vue'
-
+import AdminCategorias from './components/Admin/AdminCategorias.vue'
 //import Diccionario from './components/Diccionario/Diccionario.vue'
 
 // 2. Define algunas rutas
@@ -122,19 +121,20 @@ const routes = [
 
         }
     },
-      {
+    {
         path: '/gestion2',
         components: {
             nav: Nav,
-           //aside_fechas: AsideSearchFechas,
-          //aside_search: Aside,
             gestion: Gestion
-
         }
     },
-
-     
-
+    {
+        path: '/admin_categorias',
+        components: {
+            nav: Nav,
+            adm_categorias: AdminCategorias
+        }
+    },
 
   ]
 
@@ -158,14 +158,12 @@ const app = new Vue({
     router,
     created: function() {
         this.getServicios(),
-       this.getFiltros(),
-        this.getFiltros2(),
+        this.getFiltros(),
         this.getUltimosServicios()
     },
     data: {
         servicios: [],
         filtros: [],
-        filtro2: [],
         ultimosServicios: []
     },
     methods: {
@@ -185,13 +183,6 @@ const app = new Vue({
             var urlKeeps = 'appFiltros';
             axios.get(urlKeeps).then(response => {
                 this.filtros = response.data
-            });
-        },
-
-        getFiltros2: function() {
-            var urlKeeps = 'appFiltros2';
-            axios.get(urlKeeps).then(response => {
-                this.filtro2 = response.data
             });
         },
         getPath: function() {

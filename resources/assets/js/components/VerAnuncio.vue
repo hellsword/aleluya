@@ -216,11 +216,21 @@
             },
             comienza_filtrado: function(titulo, descripcion) {
 
-                if (this.auth.tipo == "secretaria") {
-                    titulo = this.filtrar(titulo);
-                    document.getElementById('titulo').innerHTML = titulo; 
+                if(this.auth){
+                    if (this.auth.tipo == "secretaria" || this.auth.tipo == "admin") {
+                        titulo = this.filtrar(titulo);
+                        document.getElementById('titulo').innerHTML = titulo; 
 
-                    descripcion = this.filtrar(descripcion);
+                        descripcion = this.filtrar(descripcion);
+                        document.getElementById('descripcion').innerHTML = descripcion; 
+                    }
+                    else{
+                        document.getElementById('titulo').innerHTML = titulo; 
+                        document.getElementById('descripcion').innerHTML = descripcion; 
+                    }
+                }
+                else{
+                    document.getElementById('titulo').innerHTML = titulo; 
                     document.getElementById('descripcion').innerHTML = descripcion; 
                 }
                 

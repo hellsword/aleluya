@@ -199,6 +199,8 @@ class UserController extends Controller
       $parametro5=trim($request->get('parametro5'));
       $parametro6=trim($request->get('parametro6'));
 
+      $parametro_secre=trim($request->get('parametro_secre'));
+
 
 
       $query=trim($request->get('searchText'));
@@ -220,7 +222,22 @@ class UserController extends Controller
                     )
             ->get();
 
-        if ($parametro1 != '' || $parametro2 != ''  ) {
+        if ($parametro_secre != '') {
+            $region=DB::table('anuncio as a')
+              ->join ('region as r', 'r.REGION_ID', '=' , 'a.region')
+              ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
+              ->where('a.condicion','=', '1')
+              ->where('o.id_secretaria', '=', $parametro_secre)
+              ->select('r.REGION_NOMBRE',DB::raw('count(a.region) as cantidad'),DB::raw('sum(total) as total'))
+              ->groupBy('r.REGION_NOMBRE')
+              ->get();
+
+              $fechaC = '';
+              $fechaV = '';
+              $fechas = '';
+
+        } 
+        else if ($parametro1 != '' || $parametro2 != ''  ) {
             $region=DB::table('anuncio as a')
              ->join ('region as r', 'r.REGION_ID', '=' , 'a.region')
              ->join ('orden as o', 'o.id_anuncio', '=' , 'a.id_anuncio')
@@ -736,4 +753,4 @@ class UserController extends Controller
     }
 */
 
-}
+} 
