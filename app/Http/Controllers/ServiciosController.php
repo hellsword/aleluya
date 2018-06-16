@@ -312,7 +312,7 @@ public function filtros2(){
             $orden->fecha = date("Y-m-d");
             $orden->precio_uni  = 5290;
             $orden->duracion = Input::get('tiempo');
-            $lastValue = DB::table('secretaria')->orderBy('anuncios_pend', 'asc')->first();
+            $lastValue = DB::table('secretaria')->where('estado', '=', 'activo')->orderBy('anuncios_pend', 'asc')->first();
             $orden->id_secretaria = $lastValue->id_secretaria;
             
             //vemos la fecha de vencimiento
@@ -472,6 +472,53 @@ public function filtros2(){
       alert()->success('El anuncio ha sido eliminado.', '¡Listo!')->persistent('Cerrar');
       return Redirect::to('/servicios');
 
+
+    }
+
+
+
+    public function Actualiza_secretaria(Request $request){
+
+
+        try {
+
+            DB::beginTransaction();
+            
+            $id_secretaria = $request->get('id_secretaria');
+
+            $secre = DB::table('secretaria')->where('id_secretaria', $id_secretaria)->first();
+
+            if($secre->estado == 'activo'){
+                Secretaria::where('id_secretaria', $id_secretaria)
+                ->update(['anuncios_pend' => 0, 'estado' => 'inactivo']);
+
+                $orden = DB::table('orden as o')->join ('anuncio as a', 'a.id_anuncio', '=' , 'o.id_anuncio')
+                ->where('a.condicion', 0)->where('o.id_secretaria', $id_secretaria)->get();
+
+                //Elimina las referencias a la secretaria de los anuncio que se estan inhabilitando
+                for ($i=0; $i < count($orden) ; $i++) { 
+                    $lastValue = DB::table('secretaria')->where('estado', '=', 'activo')->orderBy('anuncios_pend', 'asc')->first();
+
+                    //Asigna los anuncios a las secretacias activas
+                    Orden::where('num_pago', $orden[$i]->num_pago)->where('id_anuncio', $orden[$i]->id_anuncio)
+                    ->update(['id_secretaria' => $lastValue->id_secretaria]);
+
+                    Secretaria::where('id_secretaria', $lastValue->id_secretaria)
+                    ->update(['anuncios_pend' => $lastValue->anuncios_pend+1]);
+                }
+            }
+            else if($secre->estado == 'inactivo'){
+                Secretaria::where('id_secretaria', $id_secretaria)
+                ->update(['estado' => 'activo']);
+            }
+
+            DB::commit();
+              
+          } catch (Exception $e) {
+              DB::rollback();
+          }
+    
+          return;  
 
     }
 

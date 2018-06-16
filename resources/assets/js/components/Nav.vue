@@ -53,12 +53,13 @@
                             <li><router-link to="/gestion2">Gestion</router-link></li>
                             <li><router-link to="/admin_categorias">Administrar categorías</router-link></li>
                             <li><router-link to="/listausuarios">Lista Usuarios</router-link></li>
-                            <li><a href="/usuarios/create">Crear Usuarios</a></li>
+                            <!-- <li><a href="/usuarios/create">Crear Usuarios</a></li>  -->
                             <li><router-link to="/agregarpalabra">Agregar palabra al diccionario</router-link></li>
                             <li class="divider"></li>
                             <li><a href="/logout">Salir</a></li>
                           </ul>
                            <ul v-if="auth.tipo == 'secretaria'" class="dropdown-menu">
+                            <li>&nbsp;&nbsp; <button style="background-color: transparent; border: none; text-align: center;" v-on:click="Actualiza_secretaria" > <span style="color: green;">Activo</span> </button> </li>
                             <li><router-link to="/anuncios">Anuncios</router-link></li>
                             <li><router-link to="/listausuarios">Lista Usuarios</router-link></li>
                             <li class="divider"></li>
@@ -97,6 +98,18 @@
             auth: { type: Object | Array },
         },
         methods: {
+            Actualiza_secretaria: function() {
+                //console.log("\n id de secretaria: "+this.auth.id+"\n");
+                var url = 'actualiza_secretaria';
+                axios.post(url, {
+                	id_secretaria: this.auth.id
+                }).then(response => {
+                	this.errors = [];
+                	toastr.success('Secretaria actualizada');
+                }).catch(error => {
+                    this.errors = 'Ha ocurrido un error';
+                });
+            },
 		},
         mounted() {
             console.log('Nav Component ready.')

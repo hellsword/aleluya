@@ -11,7 +11,7 @@
         
           <input type="submit" class="w3-button w3-blue w3-round-xxlarge" value="filtrar">
 
-      </form>
+    </form>
 
     <table class="table table-striped table-bordered table-condensed table-hover">
         <thead>

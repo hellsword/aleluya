@@ -24,6 +24,8 @@ Route::get('obtenerPalabras','DiccionarioController@obtenerPalabras');
 Route::get('detalleServicio/{id_anuncio}','ServiciosController@mostrar');
 Route::get('gestion','UserController@gestion');
 Route::get('adm_categorias','UserController@adm_categorias');
+
+Route::post('actualiza_secretaria','ServiciosController@Actualiza_secretaria');
 //Route::post('nuevoServicio','ServiciosController@store');
 
 //Transferencia de datos
