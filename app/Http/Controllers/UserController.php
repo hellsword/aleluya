@@ -64,7 +64,12 @@ class UserController extends Controller
           }
       }*/
 
-      $usuarios = DB::table('users')->select('id as id','rut as rut','nombre as nombre','apellido as apellido','email as email')->paginate(5);
+      $parametro_tipo=trim($request->get('parametro_tipo'));
+
+      $usuarios = DB::table('users')
+      ->where('tipo', 'LIKE', '%'.$parametro_tipo.'%')
+      ->select('id as id','rut as rut','nombre as nombre','apellido as apellido','email as email', 'tipo as tipo', 'estado as estado')
+      ->paginate(5);
       //$usuarios = DB::table('users')->first();
       //return ["usuarios"=>$usuarios];
       return [
@@ -687,6 +692,17 @@ class UserController extends Controller
         alert()->warning('Categoría de vehículo eliminada')->persistent('Cerrar');
 
       return Redirect::to('usuarios/adm_categorias');  
+    }
+
+
+
+    public function obtenerSecretaria(Guard $auth, Request $request){
+
+      $this->middleware('auth');
+      $this->auth =$auth;
+
+      return ['auth'=>$this->auth->user()];
+        
     }
 
 

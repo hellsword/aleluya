@@ -7,7 +7,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" name="searchText" placeholder="Ingrese lo que busca..." >
                     
-                    <br><br><button type="submit" class="btn btn-primary">Buscar</button>
+                    <br><br><a href="#" class="btn btn-primary" v-on:click.prevent="Buscar()">Buscar</a>
 
                 </div>
             </div>
@@ -18,24 +18,24 @@
                 <option v-for="categoria in filtros.categorias" :value=categoria.id_categoria>{{categoria.nombre_completo}}</option>
             </select> 
             <h6>Sub Categorias</h6>
-            <select class="form-control" id="sub_categoria" name="sub_categoria">
+            <select class="form-control" id="sub_categoria" name="sub_categoria" v-model="sub_categoria">
                 <option value="" >-</option>
             </select> 
             <h6>Vehiculos</h6>
-            <select class="form-control" id="categoria_vehiculo" name="vehiculo">
+            <select class="form-control" id="categoria_vehiculo" name="vehiculo" v-model="vehiculo">
                 <option value="" >Todos</option>
                 <option v-for="categoria_vehiculo in filtros.categoria_vehiculos" :value=categoria_vehiculo.nombre >{{categoria_vehiculo.nombre}}</option>
             </select> <br>
 
             <h6>Lugar</h6>
-            <select class="form-control" id="region" name="region" v-on:click="selectProvincia(filtros.provincias)">
+            <select class="form-control" id="region" name="region" v-on:click="selectProvincia(filtros.provincias)" v-model="region">
                 <option value="" >Todos</option>
                 <option v-for="region in filtros.regiones" :value=region.REGION_ID >{{region.REGION_NOMBRE}}</option>
             </select> <br>
-            <select class="form-control" id="provincia" name="provincia" v-on:click="selectComuna(filtros.comunas)">
+            <select class="form-control" id="provincia" name="provincia" v-on:click="selectComuna(filtros.comunas)" v-model="provincia">
                 <option value="" >-</option>
             </select> <br>
-            <select class="form-control" id="comuna" name="comuna">
+            <select class="form-control" id="comuna" name="comuna" v-model="comuna">
                 <option value="" >-</option>
             </select> 
             
@@ -47,13 +47,39 @@
 
 
 <script>
+
+
     export default {
         props: {
             filtros: { type: Object | Array },
         },
+        data: function() {
+            return {
+                vehiculo: '',
+                sub_categoria: '',
+                region: '',
+                provincia: '',
+                comuna: ''
+            }
+        },
         methods: {
+            Buscar: function() {
+                console.log("Buscando..... ")
+                var urlKeeps = 'appServicios';
+                axios.get(urlKeeps, {
+                params: {
+                    vehiculo: this.vehiculo,
+                    sub_categoria: this.sub_categoria,
+                    region: this.region,
+                    provincia: this.provincia,
+                    comuna: this.comuna
+                },}).then(response => {
+                    this.servicios = response.data
+                });
+            },
             selectCategory: function(sub_categorias) {
                 
+                this.vehiculo = '';
                 var seleccion = parseInt($( "select#categoria" ).val());
                 var count = Object.keys(sub_categorias).length;
 

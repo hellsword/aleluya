@@ -25,7 +25,7 @@ window.axios = require('axios');
 // Aqui se importan los componentes
 import Nav from './components/Nav.vue'
 import Main from './components/Main.vue'
-import Aside from './components/Aside/AsideSearch.vue'
+//import Aside from './components/Aside/AsideSearch.vue'
 import Servicios from './components/Main/Servicios.vue'
 import Login from './components/Auth/Login.vue'
 import Register from './components/Auth/Register.vue'
@@ -59,7 +59,7 @@ const routes = [
         path: '/mis_anuncios',
         components: {
             nav: Nav,
-            aside_search: Aside,
+            //aside_search: Aside,
             servicios: Servicios
         }
     },
@@ -67,7 +67,7 @@ const routes = [
         path: '/servicios',
         components: {
             nav: Nav,
-            aside_search: Aside,
+            //aside_search: Aside,
             servicios: Servicios
         }
     },

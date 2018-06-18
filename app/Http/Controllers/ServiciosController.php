@@ -16,6 +16,7 @@ use App\Vehiculo;
 use App\Orden;
 use App\Forma_pago;
 use App\Secretaria;
+use App\User;
 
 use Image; 
 use DB;
@@ -117,6 +118,84 @@ class ServiciosController extends Controller
         }
         */
 
+
+
+        if(trim($request->get('vehiculo')) != null){
+            $servicios = DB::table('anuncio as a')
+            ->join ('orden as o', 'a.id_anuncio', '=' , 'o.id_anuncio')
+            ->join ('users as u', 'o.id_cliente', '=' , 'u.id')
+            ->join ('fotos as f', 'a.id_anuncio', '=' , 'f.id_anuncio')
+            ->join ('vehiculo as v', 'a.id_anuncio', '=' , 'v.id_anuncio')
+            ->join ('region', 'region.REGION_ID', '=' , 'a.region')
+            ->join ('provincia', 'provincia.PROVINCIA_ID', '=' , 'a.provincia')
+            ->join ('comuna', 'comuna.COMUNA_ID', '=' , 'a.comuna')
+            ->join ('forma_pago as fo', 'fo.num_pago', '=' , 'o.num_pago')
+            ->where('f.id_foto', '=', '0')
+            ->where('a.condicion', '=', '1')
+            ->where('o.fecha_venc', '>=', $fecha_actual)
+            ->where(\DB::raw("CONCAT(a.titulo, ' ', a.tipo_servicio, ' ', a.descripcion)"), 'LIKE', '%'.$query.'%')     //BUSCA POR EL TITULO DEL ANUNCIO
+            ->where('a.tipo_servicio', 'LIKE', '%'.$request->get('sub_categoria').'%')
+            ->where('a.comuna', 'LIKE', '%'.$request->get('region').'%')
+            ->where('a.comuna', 'LIKE', '%'.$request->get('provincia').'%')
+            ->where('a.comuna', 'LIKE', '%'.$request->get('comuna').'%')
+            ->where('v.categoria', '=', $request->get('vehiculo'))
+            ->select('o.id_cliente as id_cliente',
+                    'a.id_anuncio as id_anuncio',
+                    'a.titulo as titulo',
+                    'a.descripcion as descripcion',
+                    'a.precio_serv as precio_serv',
+                    'a.tipo_servicio as tipo_servicio',
+                    'region.REGION_NOMBRE as region',
+                    'provincia.PROVINCIA_NOMBRE as provincia',
+                    'comuna.COMUNA_NOMBRE as comuna',
+                    'u.nombre as nombre',
+                    'u.apellido as apellido',
+                    'f.foto as foto',
+                    'o.fecha as fecha'
+                    )
+            ->orderBy('fo.modo', 'desc')
+            ->get();
+        }
+        else{   //Carga un servicio con personas  
+            $servicios = DB::table('anuncio as a')
+            ->join ('orden as o', 'a.id_anuncio', '=' , 'o.id_anuncio')
+            ->join ('users as u', 'o.id_cliente', '=' , 'u.id')
+            ->join ('fotos as f', 'a.id_anuncio', '=' , 'f.id_anuncio')
+            ->join ('region', 'region.REGION_ID', '=' , 'a.region')
+            ->join ('provincia', 'provincia.PROVINCIA_ID', '=' , 'a.provincia')
+            ->join ('comuna', 'comuna.COMUNA_ID', '=' , 'a.comuna')
+            ->join ('forma_pago as fo', 'fo.num_pago', '=' , 'o.num_pago')
+            ->where('a.condicion', '=', '1')
+            ->where('f.id_foto', '=', '0')
+            //condicion para mostrar solo los avisos q esten vijentes 
+            ->where('o.fecha_venc', '>=', $fecha_actual)
+
+            ->where(\DB::raw("CONCAT(a.titulo, ' ', a.tipo_servicio, ' ', a.descripcion)"), 'LIKE', '%'.$query.'%')     //BUSCA POR EL TITULO DEL ANUNCIO
+            ->where('a.tipo_servicio', 'LIKE', '%'.$request->get('sub_categoria').'%')
+            ->where('a.comuna', 'LIKE', '%'.$request->get('region').'%')
+            ->where('a.comuna', 'LIKE', '%'.$request->get('provincia').'%')
+            ->where('a.comuna', 'LIKE', '%'.$request->get('comuna').'%')
+            ->select('o.id_cliente as id_cliente',
+                    'a.id_anuncio as id_anuncio',
+                    'a.titulo as titulo',
+                    'a.descripcion as descripcion',
+                    'a.precio_serv as precio_serv',
+                    'a.tipo_servicio as tipo_servicio',
+                    'region.REGION_NOMBRE as region',
+                    'provincia.PROVINCIA_NOMBRE as provincia',
+                    'comuna.COMUNA_NOMBRE as comuna',
+                    'u.nombre as nombre',
+                    'u.apellido as apellido',
+                    'f.foto as foto',
+                    'o.fecha as fecha'
+                    )
+            ->orderBy('fo.modo', 'desc')
+            ->get();
+        }
+
+
+
+        /*
             $servicios=DB::table('anuncio as a')
             ->join ('orden as o', 'a.id_anuncio', '=' , 'o.id_anuncio')
             ->join ('users as u', 'o.id_cliente', '=' , 'u.id')
@@ -147,7 +226,7 @@ class ServiciosController extends Controller
                     ->orderBy('fo.modo', 'desc')
                     ->get();
 
-            
+            */
 
 
             if($this->auth->user()){
@@ -477,27 +556,35 @@ public function filtros2(){
 
 
 
-    public function Actualiza_secretaria(Request $request){
+    public function Actualiza_usuario(Request $request){
 
 
         try {
 
             DB::beginTransaction();
             
-            $id_secretaria = $request->get('id_secretaria');
+            $id_usuario = $request->get('id_usuario');
 
-            $secre = DB::table('secretaria')->where('id_secretaria', $id_secretaria)->first();
+            $usuario = DB::table('users')->where('id', $id_usuario)->first();
 
-            if($secre->estado == 'activo'){
-                Secretaria::where('id_secretaria', $id_secretaria)
-                ->update(['anuncios_pend' => 0, 'estado' => 'inactivo']);
+            if($usuario->tipo == 'secretaria' && $usuario->estado == 'activo'){
+
+                User::where('id', $id_usuario)
+                ->update(['estado' => 'inactivo']);
+
+                Secretaria::where('id_secretaria', $id_usuario)
+                ->update(['anuncios_pend' => 0]);
 
                 $orden = DB::table('orden as o')->join ('anuncio as a', 'a.id_anuncio', '=' , 'o.id_anuncio')
-                ->where('a.condicion', 0)->where('o.id_secretaria', $id_secretaria)->get();
+                ->where('a.condicion', 0)->where('o.id_secretaria', $id_usuario)->get();
 
                 //Elimina las referencias a la secretaria de los anuncio que se estan inhabilitando
                 for ($i=0; $i < count($orden) ; $i++) { 
-                    $lastValue = DB::table('secretaria')->where('estado', '=', 'activo')->orderBy('anuncios_pend', 'asc')->first();
+                    $lastValue = DB::table('secretaria as s')
+                    ->join ('users as u', 'u.id', '=' , 's.id_secretaria')
+                    ->where('u.estado', '=', 'activo')
+                    ->orderBy('s.anuncios_pend', 'asc')
+                    ->first();
 
                     //Asigna los anuncios a las secretacias activas
                     Orden::where('num_pago', $orden[$i]->num_pago)->where('id_anuncio', $orden[$i]->id_anuncio)
@@ -507,8 +594,12 @@ public function filtros2(){
                     ->update(['anuncios_pend' => $lastValue->anuncios_pend+1]);
                 }
             }
-            else if($secre->estado == 'inactivo'){
-                Secretaria::where('id_secretaria', $id_secretaria)
+            else if($usuario->estado == 'activo'){
+                User::where('id', $id_usuario)
+                ->update(['estado' => 'inactivo']);
+            }
+            else if($usuario->estado == 'inactivo'){
+                User::where('id', $id_usuario)
                 ->update(['estado' => 'activo']);
             }
 

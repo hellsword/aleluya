@@ -69,6 +69,7 @@
     
 
     <div id="app" >
+			
 
 			<!-- Barra superior -->
 			<router-view name="nav" :auth=servicios.auth></router-view>
@@ -86,6 +87,8 @@
 			<router-view name="login" ></router-view>
 			<router-view name="register" ></router-view>
 
+			<router-view name="servicios" :ruta=getPath() :auth=servicios.auth :filtros=filtros ></router-view>
+
       <section id="main" class="">
 			
 				<div class="container" >
@@ -94,12 +97,12 @@
 							
 
 							<!--Componentes laterales -->
-              <router-view name="aside_search" :filtros=filtros></router-view>
+              
 							<router-view name="aside_secretaria" :auth=servicios.auth></router-view>
 							<router-view name="anuncios"></router-view>
 							<router-view name="listausuarios" :auth=servicios.auth></router-view>
 							<router-view name="agregarpalabra"></router-view>
-              <router-view name="servicios" :ruta=getPath() :auth=servicios.auth ></router-view>
+              
               <router-view name="gestion" :ruta=getPath() :auth=servicios.auth ></router-view>
 							<router-view name="adm_categorias" :auth=servicios.auth ></router-view>
 

@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div v-if="auth">
+            {{getSecretaria()}}
+        </div>
         <nav class="navbar is-info">
             <div class="navbar-brand">
                 <a class="navbar-item" href="https://bulma.io">
@@ -59,7 +62,12 @@
                             <li><a href="/logout">Salir</a></li>
                           </ul>
                            <ul v-if="auth.tipo == 'secretaria'" class="dropdown-menu">
-                            <li>&nbsp;&nbsp; <button style="background-color: transparent; border: none; text-align: center;" v-on:click="Actualiza_secretaria" > <span style="color: green;">Activo</span> </button> </li>
+                            <li>&nbsp;&nbsp; <button style="background-color: transparent; border: none; text-align: center;" v-on:click="Actualiza_secretaria" > 
+                                <span v-if="secre.auth">
+                                    <span v-if="secre.auth.estado == 'activo'" style="color: green;">Activo</span> 
+                                    <span v-if="secre.auth.estado == 'inactivo'" style="color: red;">Inactivo</span> 
+                                </span>
+                            </button> </li>
                             <li><router-link to="/anuncios">Anuncios</router-link></li>
                             <li><router-link to="/listausuarios">Lista Usuarios</router-link></li>
                             <li class="divider"></li>
@@ -97,12 +105,25 @@
         props: {
             auth: { type: Object | Array },
         },
+        data: function() {
+            return {
+                secre : [],
+            }
+        },
         methods: {
+            getSecretaria: function() {
+                var urlKeeps = 'obtenerSecretaria';
+                axios.get(urlKeeps).then(response => {
+                    this.secre = response.data;
+                    //this.cargaGrafico(this.datos.region);
+                    //revisa si existe registro en el array 
+                });
+            },
             Actualiza_secretaria: function() {
                 //console.log("\n id de secretaria: "+this.auth.id+"\n");
-                var url = 'actualiza_secretaria';
+                var url = 'actualiza_usuario';
                 axios.post(url, {
-                	id_secretaria: this.auth.id
+                    id_usuario: this.auth.id
                 }).then(response => {
                 	this.errors = [];
                 	toastr.success('Secretaria actualizada');
