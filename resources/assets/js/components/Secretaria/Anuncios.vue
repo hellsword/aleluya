@@ -43,18 +43,23 @@
 
 					<div v-if="anuncio.forma_pago == '0'">
 						<br><font size=4 color="#00FFFF" face="Comic Sans MS,arial,verdana">Pagado</font>
-						<form method="post" class="stdform" autocomplete="off" v-on:submit.prevent="updateAnuncios(anuncio.id_anuncio)">
-							<input type="" name="id_anuncio" :value=anuncio.id_anuncio hidden>
-							<button class="boton verde" type="submit">Aceptar</button>
-						</form>
+							<div>
+							
+							<button class="boton verde" 
+							v-on:click="AceptarAnuncio(anuncio.id_anuncio)" >Aceptar</button><button class="boton rojo" 
+							v-on:click="RechazarAnuncio(anuncio.id_anuncio)" >Rechazar</button>
+							</div>
+							
 					</div>
 
 					<div v-else>
 						<br><font size=4 color="red" face="Comic Sans MS,arial,verdana">Pendiente</font>
-						<form method="post" class="stdform" autocomplete="off" v-on:submit.prevent="updateAnuncios(anuncio.id_anuncio)">
-							<input type="" name="id_anuncio" :value=anuncio.id_anuncio hidden>
-							<button class="boton verde" type="submit">Aceptar</button>
-						</form>
+							<div>
+							
+							<button class="boton verde" 
+							v-on:click="AceptarAnuncio(anuncio.id_anuncio)" >Aceptar</button><button class="boton rojo" 
+							v-on:click="RechazarAnuncio(anuncio.id_anuncio)" >Rechazar</button>
+							</div>
 					</div>
 
 				</td>
@@ -73,6 +78,10 @@
             return {
 				anuncios: [],
 				errors: [],
+				aceptar : 'aceptar',
+				rechazar : 'rechazar',
+		
+		
 			}
 		},
         props: {
@@ -84,17 +93,37 @@
 					this.anuncios = response.data
 				});
 			},
-			updateAnuncios: function(id_anuncio) {
-				console.log(id_anuncio)
-                var url = 'appAnuncios/' + id_anuncio;
-                axios.put(url).then(response => {
+		
+			AceptarAnuncio: function(id) {
+                console.log("\n id : "+id);
+                var url = 'condiciones';
+                axios.post(url, {
+					condicion1: this.aceptar,
+					id_anuncio: id
+                }).then(response => {
 					this.errors = [];
-					toastr.success('Anuncio aceptado.');
-					this.getAnuncios();  
-				}).catch(error => {
-					this.errors = error.response.data;
-				});
-            }
+					this.getAnuncios();
+					toastr.success(' actualizada');
+					
+                }).catch(error => {
+                    this.errors = 'Ha ocurrido un error';
+                });
+			},
+			RechazarAnuncio: function(id) {
+                console.log("\n id : "+id);
+                var url = 'condiciones';
+                axios.post(url, {
+					condicion2: this.rechazar,
+					id_anuncio: id
+                }).then(response => {
+					this.errors = [];
+					this.getAnuncios();
+					toastr.success(' actualizada');
+					
+                }).catch(error => {
+                    this.errors = 'Ha ocurrido un error';
+                });
+            },
 		},
         mounted() {
 			this.getAnuncios();

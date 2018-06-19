@@ -16,7 +16,7 @@
     <table class="table table-striped table-bordered table-condensed table-hover">
         <thead>
             <th>Regiones</th>
-            <th>Cantidad de Anuncios</th>
+            <th>Cantidad de Anuncios Aceptados</th>
             <th>Monto Total</th>
             
         </thead>
@@ -26,10 +26,39 @@
             <td>{{regiones.cantidad}}</td>
             <td>{{regiones.total}}</td>
         </tr>
+       
 
+    </table>
+ 
+
+    <table class="table table-striped table-bordered table-condensed table-hover">
+        <thead>
+            <th>Regiones</th>
+            <th>Cantidad de Anuncios Rechazados</th>
+            
+        </thead>
+    
+        <tr v-for="regiones2 in datos.region2"> 
+            <td>{{regiones2.REGION_NOMBRE}}</td>
+            <td>{{regiones2.cantidad}}</td>
+        </tr>
 
     </table>
 
+
+    <table class="table table-striped table-bordered table-condensed table-hover">
+        <thead>
+            <th>Regiones</th>
+            <th>Cantidad de Anuncios Pendientes</th>
+            
+        </thead>
+    
+        <tr v-for="regiones3 in datos.region3"> 
+            <td>{{regiones3.REGION_NOMBRE}}</td>
+            <td>{{regiones3.cantidad}}</td>
+        </tr>
+
+    </table>
 
   <section>
       <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos" >
@@ -52,15 +81,11 @@
   <div v-if="datos.region">
 
               {{cargaGrafico(datos.region)}}
-              <column-chart xtitle="Regiones" ytitle="Cantidad" download="true" label="Cantidad"
-              width="800px" height="500px" :data="chartData">
-                
-              </column-chart>
+              <column-chart :download="true" xtitle="Regiones" ytitle="Cantidad" label="Cantidad"
+              width="800px" height="500px" :data="chartData"></column-chart>
+ </div>
 
-
-        </div>
-
-
+    
 
   <section>
       <form method="get" class="stdform" style="width: 60%; text-align: left" v-on:submit.prevent="getDatos2">
@@ -162,7 +187,7 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                     this.cargaGrafico(this.datos.region);
                     //revisa si existe registro en el array 
                     if(this.datos.region.length==0){
-                         toastr.error('No Hay Registros para esas Fechas');
+                         toastr.error('No Hay Registros');
                          }
 
                 });
@@ -178,7 +203,6 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                 },}).then(response => {
                     this.datos2 = response.data
                     this.LimpiarGrafico2();
-                    this.cargaGrafico2(this.datos2.region)
                   //revisa si existe registro en el array 
                     if(this.datos2.region.length==0){
                          toastr.error('No Hay Registros para esas Fechas');
@@ -213,9 +237,9 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper'
                  this.chartData[i] =[region[i].REGION_NOMBRE,region[i].cantidad];
                
                  }
-               
                     
             },
+
 
             //Metodos para limpiar los arreglas que tienen los datos de los graficos
             LimpiarGrafico: function() {

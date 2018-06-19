@@ -102,5 +102,61 @@ class AnuncioController extends Controller
       }
     }
 
+    public function updateCondicion(Request $request)
+{
+ 
+  $id_anuncio=$request->get('id_anuncio');
+  $condicion1=$request->get('condicion1');
+  $condicion2=$request->get('condicion2');
+
+ if($condicion1=="aceptar"){
+    try {
+
+        DB::beginTransaction();
+
+      
+            DB::table('anuncio as a')
+            ->where('a.id_anuncio', '=' ,$id_anuncio)
+            ->update(['condicion' => 1]);
+
+            $secretaria=DB::table('secretaria')->where('id_secretaria', '=', $this->auth->user()->id)->select('anuncios_pend as anuncios_pend')->first();
+
+            Secretaria::where('id_secretaria', $this->auth->user()->id)
+                  ->update(['anuncios_pend' => $secretaria->anuncios_pend-1]);
+
+            DB::commit();
+            return;
+          
+      } catch (Exception $e) {
+          DB::rollback();
+          return;
+      }
+    }else if($condicion2=="rechazar"){
+        try {
+    
+            DB::beginTransaction();
+    
+          
+                DB::table('anuncio as a')
+                ->where('a.id_anuncio', '=' ,$id_anuncio)
+                ->update(['condicion' => 3]);
+    
+                $secretaria=DB::table('secretaria')->where('id_secretaria', '=', $this->auth->user()->id)->select('anuncios_pend as anuncios_pend')->first();
+    
+                Secretaria::where('id_secretaria', $this->auth->user()->id)
+                      ->update(['anuncios_pend' => $secretaria->anuncios_pend-1]);
+    
+                DB::commit();
+                return;
+              
+          } catch (Exception $e) {
+              DB::rollback();
+              return;
+          }
+        }
+
+}
+
+
 
   }
