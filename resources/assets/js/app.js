@@ -37,6 +37,7 @@ import ListaUsuarios from './components/ListaUsuarios.vue'
 import AgregarPalabra from './components/Diccionario/AgregarPalabra.vue'
 import Gestion from './components/Admin/Gestion.vue'
 import AdminCategorias from './components/Admin/AdminCategorias.vue'
+import Anuncio_P from './components/Anuncio_P.vue'
 //import Diccionario from './components/Diccionario/Diccionario.vue'
 
 // 2. Define algunas rutas
@@ -133,6 +134,13 @@ const routes = [
         components: {
             nav: Nav,
             adm_categorias: AdminCategorias
+        }
+    },
+    {
+        path: '/anuncio_p',
+        components: {
+            nav: Nav,
+            anuncio_p: Anuncio_P
         }
     },
 
