@@ -26,8 +26,8 @@ Route::get('gestion','UserController@gestion');
 Route::get('adm_categorias','UserController@adm_categorias');
 Route::get('obtenerSecretaria','UserController@obtenerSecretaria');
 Route::post('actualiza_usuario','ServiciosController@Actualiza_usuario');
-
 Route::post('condiciones','AnuncioController@updateCondicion');
+Route::post('update_anunciospen','AnuncioPenController@update_anunciospen');
 
 //Route::post('nuevoServicio','ServiciosController@store');
 

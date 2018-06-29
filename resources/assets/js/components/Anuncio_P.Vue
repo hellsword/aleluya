@@ -15,42 +15,48 @@
                     <td>{{anuncio.id_anuncio}}</td>
 				    <td>{{anuncio.titulo}}</td>
                     <td>
-                    <a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="edit_anuncio(anuncio)">Actualizar Anuncio</a>
+                    <a href="#" class="btn btn-danger btn-sm" v-on:click.prevent="edit_anuncio(anuncio) ">Actualizar Anuncio</a>
                     </td>
                 </tr>
             </table>
     </div>
     <section>
 
-<form method="POST" v-on:submit.prevent="update_anuncio(fill_anuncio.id_anuncio)">
-<div class="modal fade" id="edit">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>×</span>
-                </button>
-                <h4>Editar</h4>
-            </div>
-            <div class="modal-body">
-                <label for="anuncio">Actualizar Titulo</label>
-                <input type="text" name="titulo" class="form-control" v-model="fill_anuncio.titulo">
-                
-            </div>
 
-            <div class="modal-body">
-                <label for="anuncio">Actualizar Descripcion</label>
-                <input type="text" name="descripcion" class="form-control" v-model="fill_anuncio.descripcion">
-                
-            </div>
+    <b-modal :active.sync="modal_actualiza">
+        <form v-on:submit.prevent="update_anuncio">
+            <div class="modal-card" style="width: auto">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Editar anuncio</p>
+                </header>
+                <section class="modal-card-body">
+                    <b-field label="Titulo">
+                        <b-input
+                            type="text"
+                            v-model = "titulo"
+                            placeholder="Your titulo"
+                            required>
+                        </b-input>
+                    </b-field>
 
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-primary" value="Actualizar">
+                    <b-field label="Descripcion">
+                        <b-input
+                            type="text"
+                            v-model = "descripcion"
+                            password-reveal
+                            placeholder="Your password"
+                            required>
+                        </b-input>
+                    </b-field>
+
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button" type="button" @click="modal_actualiza = false">Cancelar</button>
+                    <button class="button is-primary" type="submit" >Aceptar</button>
+                </footer>
             </div>
-        </div>
-    </div>
-</div>
-</form>
+        </form>
+    </b-modal>
 
     </section>	
 </div>        
@@ -65,10 +71,13 @@ export default {
    
     data: function() {
             return {
+                modal_actualiza: false,
                 val: 2,
                 servicios : [],
-				errors: [],
-                fill_anuncio: {'id_anuncio': '','titulo': '','descripcion':''},                           
+				errors: [],   
+                id_anuncio: '',
+                titulo: '',
+                descripcion: ''                      
             }
         },
         props: {
@@ -87,18 +96,26 @@ export default {
 			},
 
             edit_anuncio: function(anuncio) {
-                this.fill_anuncio.id_anuncio = anuncio.id_anuncio;
-                this.fill_anuncio.titulo = anuncio.titulo;
-                this.fill_anuncio.descripcion= anuncio.descripcion;
-                $('#edit').modal('show');
+                this.id_anuncio = anuncio.id_anuncio;
+                this.titulo = anuncio.titulo;
+                this.descripcion= anuncio.descripcion;
+                this.modal_actualiza = true;
             },
-            update_anuncio: function(id_anuncio){
-                var url = 'anunciospen/' + id_anuncio;
-                axios.put(url, this.fillKeep).then(response => {
-                    this.getAnuncios();
-                    this.fill_anuncio = {'id_anuncio': '', 'titulo': ''};
+            update_anuncio: function(){
+                axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+
+                var url = 'update_anunciospen';
+                axios.post(url, {
+                    id_anuncio: this.id_anuncio,
+                    titulo: this.titulo,
+                    descripcion: this.descripcion,
+                }).then(response => {
+                    this.id_anuncio = '',
+                    this.descripcion = '',
+                    this.titulo = '',
                     this.errors = [];
-                    $('#edit').modal('hide');
+                    this.modal_actualiza = false;
+                    this.getAnuncios()
                     toastr.success('Tarea actualizada con éxito');
                 }).catch(error => {
                     this.errors = 'Corrija para poder editar con éxito'

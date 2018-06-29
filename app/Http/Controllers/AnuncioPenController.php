@@ -80,17 +80,12 @@ class AnuncioPenController extends Controller
 
     }
 
-    public function update(Request $request,$id_anuncio)
+    public function update_anunciospen(Request $request)
     {
-        
-        //$anuncio =Anuncio::findOrFail($id_anuncio);
-        $this->validate($request, [
-            'titulo' => 'required',
-        ]);
+    
+        Anuncio::where('id_anuncio', $request->get('id_anuncio') )
+              ->update(['titulo' => $request->get('titulo')] );
 
-        $anuncios=Anuncio::findOrFail($id_anuncio);
-        $anuncios->titulo=$request->get('titulo');
-        $anuncios->update();
         //Anuncio::where('id_anuncio',$id_anuncio)->update(['titulo'=>$anuncio->titulo]);
         //Anuncio::find($id_anuncio)->update($request->get('titulo'));
         return;
