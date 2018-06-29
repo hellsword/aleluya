@@ -40,13 +40,11 @@
                     </b-field>
 
                     <b-field label="Descripcion">
-                        <b-input
-                            type="text"
-                            v-model = "descripcion"
-                            password-reveal
-                            placeholder="Your password"
-                            required>
-                        </b-input>
+                        <p>
+            <span class="field"> 
+                <ckeditor v-model="descripcion" :height="'300px'" :toolbar="[['Format']]"></ckeditor>
+            </span> 
+            </p>
                     </b-field>
 
                 </section>
@@ -64,6 +62,7 @@
 
 <script>
 
+import Ckeditor from './Ckeditor.vue'
 
 import axios from 'axios';
 
@@ -121,6 +120,9 @@ export default {
                     this.errors = 'Corrija para poder editar con éxito'
                 });
             },            
+        },
+        components: { 
+            Ckeditor,
         },
         mounted() {
             this.getAnuncios()
