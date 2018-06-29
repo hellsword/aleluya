@@ -105,6 +105,7 @@
               
               <router-view name="gestion" :ruta=getPath() :auth=servicios.auth ></router-view>
 							<router-view name="adm_categorias" :auth=servicios.auth ></router-view>
+							<router-view name="anuncio_p"></router-view>
 
           </div>
         </div>

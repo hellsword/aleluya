@@ -41,7 +41,7 @@ Route::resource('usuarios','UserController');
 Route::resource('registro','User2Controller');
 Route::resource('cupones','CuponController');
 Route::resource('diccionario','DiccionarioController');
-
+Route::resource('anunciospen','AnuncioPenController');
 
 
 Route::get('/{vue?}', function () { return view('principal'); })->where('vue', '[\/\w\.-]*');

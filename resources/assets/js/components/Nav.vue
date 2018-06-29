@@ -75,6 +75,7 @@
                           </ul>
                            <ul v-if="auth.tipo== 'cliente'" class="dropdown-menu">
                             <li> <router-link to="/mis_anuncios">Mis Anuncios</router-link> </li>
+                            <li> <router-link to="/anuncio_p">Mis Anuncios Pendientes</router-link> </li>
                             <li><a href="/favoritos">Favoritos</a></li>
                             <li><a href="/cupones">Subir Cupón</a></li>
                             <li class="divider"></li>
