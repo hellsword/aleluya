@@ -84,7 +84,8 @@ class AnuncioPenController extends Controller
     {
     
         Anuncio::where('id_anuncio', $request->get('id_anuncio') )
-              ->update(['titulo' => $request->get('titulo')] );
+              ->update(['titulo' => $request->get('titulo'),
+              'descripcion' => $request->get('descripcion')]);
 
         //Anuncio::where('id_anuncio',$id_anuncio)->update(['titulo'=>$anuncio->titulo]);
         //Anuncio::find($id_anuncio)->update($request->get('titulo'));
