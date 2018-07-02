@@ -391,7 +391,8 @@ public function filtros2(){
             $orden->fecha = date("Y-m-d");
             $orden->precio_uni  = 5290;
             $orden->duracion = Input::get('tiempo');
-            $lastValue = DB::table('secretaria')->where('estado', '=', 'activo')->orderBy('anuncios_pend', 'asc')->first();
+            $lastValue = DB::table('secretaria as s')->join ('users as u', 'u.id', '=' , 's.id_secretaria')
+            ->where('u.estado', '=', 'activo')->orderBy('s.anuncios_pend', 'asc')->first();
             $orden->id_secretaria = $lastValue->id_secretaria;
             
             //vemos la fecha de vencimiento

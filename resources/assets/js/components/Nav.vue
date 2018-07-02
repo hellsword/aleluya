@@ -6,7 +6,7 @@
         <nav class="navbar is-info">
             <div class="navbar-brand">
                 <a class="navbar-item" href="https://bulma.io">
-                <img src="images/logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+                <img src="images/l3.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
                 </a>
                 <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
                 <span></span>
@@ -54,7 +54,7 @@
                             </a>
                         <ul v-if="auth.tipo == 'admin'" class="dropdown-menu">
                             <li><router-link to="/gestion2">Gestion</router-link></li>
-                            <li><router-link to="/admin_categorias">Administrar categorías</router-link></li>
+                            <!-- <li><router-link to="/admin_categorias">Administrar categorías</router-link></li> -->
                             <li><router-link to="/listausuarios">Lista Usuarios</router-link></li>
                             <!-- <li><a href="/usuarios/create">Crear Usuarios</a></li>  -->
                             <li><router-link to="/agregarpalabra">Agregar palabra al diccionario</router-link></li>
@@ -76,8 +76,8 @@
                            <ul v-if="auth.tipo== 'cliente'" class="dropdown-menu">
                             <li> <router-link to="/mis_anuncios">Mis Anuncios</router-link> </li>
                             <li> <router-link to="/anuncio_p">Mis Anuncios Pendientes</router-link> </li>
-                            <li><a href="/favoritos">Favoritos</a></li>
-                            <li><a href="/cupones">Subir Cupón</a></li>
+                            <!--  <li><a href="/favoritos">Favoritos</a></li>  -->
+                            <!--  <li><a href="/cupones">Subir Cupón</a></li>  -->
                             <li class="divider"></li>
                             <li><a href="/logout">Salir</a></li>
                           </ul>

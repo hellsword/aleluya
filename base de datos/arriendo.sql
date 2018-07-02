@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2018 a las 20:15:40
+-- Tiempo de generación: 02-07-2018 a las 22:52:54
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.1.15
 
@@ -48,13 +48,7 @@ CREATE TABLE `anuncio` (
 --
 
 INSERT INTO `anuncio` (`id_anuncio`, `titulo`, `descripcion`, `condicion`, `precio_serv`, `tipo_servicio`, `id_categoria`, `region`, `provincia`, `comuna`, `forma_pago`, `total`) VALUES
-(1, 'Servicios sexuales con pu tas', '<p><strong>&iquest;Qu&eacute; productos o servicios est&aacute;n sujetos a esta pol&iacute;tica?</strong></p>\n\n<p>Esta pol&iacute;tica se aplica, por ejemplo, a lo siguiente:&nbsp;</p>\n\n<p>La pu ta que te pario, tenemos po rno para rato</p>\n\n<ul>\n	<li>pornograf&iacute;a, por ejemplo,&nbsp;pornograf&iacute;a en Internet y revistas, libros y pel&iacute;culas;</li>\n	<li>prostituci&oacute;n y servicios de acompa&ntilde;ante &iacute;ntimo, como prostitutas;</li>\n	<li>desnudo completo y parcial, y contenido&nbsp;sexual en im&aacute;genes, videos o lenguaje;</li>\n	<li>servicios y productos para agrandamiento peniano y aumento de senos.</li>\n	<li>ropa de modelaje (como lencer&iacute;a) que tenga naturaleza&nbsp;sexual;</li>\n	<li>sitios de citas con temas, lenguaje o im&aacute;genes&nbsp;sexualmente expl&iacute;citos;</li>\n	<li>servicios de mensajer&iacute;a er&oacute;tica y privada;</li>\n	<li>juguetes&nbsp;sexuales;</li>\n	<li>servicios de agencias de matrimonio internacionales (por ejemplo, servicios de novias por correo).</li>\n</ul>\n\n<ul>\n</ul>\n\n<p><strong>&iquest;Qu&eacute; productos o servicios no est&aacute;n sujetos a esta pol&iacute;tica?</strong></p>\n\n<p>Por lo general, esta pol&iacute;tica no se aplica a lo siguiente:</p>\n\n<ul>\n	<li>educaci&oacute;n sobre&nbsp;sexo m&aacute;s seguro, campa&ntilde;as de concientizaci&oacute;n sobre el VIH/SIDA y anticonceptivos de venta libre, siempre que los anuncios:\n	<ul>\n		<li>no tengan contenido&nbsp;sexual;</li>\n		<li>no est&eacute;n vinculados a contenido&nbsp;sexual o a los productos y servicios prohibidos mencionados anteriormente.</li>\n		<li>Consulte&nbsp;<a href=\"https://business.twitter.com/adspolicy/healthcare\">Productos y servicios farmac&eacute;uticos y de salud</a>&nbsp;para obtener m&aacute;s informaci&oacute;n.</li>\n	</ul>\n	</li>\n	<li>servicios de matrimonio y citas, siempre y cuando el servicio cumpla con las siguientes condiciones:\n	<ul>\n		<li>no sea&nbsp;sexual;</li>\n		<li>no haga referencia a la prostituci&oacute;n u otras actividades ilegales ni las promocione;</li>\n		<li>est&eacute; claramente dirigido a adultos.</li>\n	</ul>\n	</li>\n	<li>ropa de modelaje (como lencer&iacute;a) que no tenga naturaleza&nbsp;sexual;</li>\n	<li>desnudos art&iacute;sticos;</li>\n	<li>contenido relacionado con la lactancia;</li>\n	<li>dibujos m&eacute;dicos;</li>\n	<li>noticias e informaci&oacute;n relacionadas con el&nbsp;sexo y la&nbsp;sexualidad que no tienen naturaleza&nbsp;sexual. tENEMOS POR NO PARA RATO. MU&Ntilde;ECAS SYSTEM APRA TODOS LAS MEJORES PU TAS SE&lt;XUALES</li>\n</ul>\n\n<p>puro se#xo hermano</p>', 1, 433434, 'arriendo', 2, '4', '42', '4202', 0, 21160),
-(2, 'Vendo marihuana', '<p>&nbsp; A 500 las putas, lleve de la buena</p>\n\n<p>apurate harry que la negra nos hace dos por uno, vivan las pu T a&quot;s</p>\n\n<p>Puro S$$$e!Xo vieeeeeeeeeeeeeja</p>\n\n<p>por el c(U)Lo</p>\n\n<p>analogia por doquier</p>\n\n<p>Esta es una prueba de filtros s&quot; e$% x/&amp;U&quot;%#ALES</p>', 1, 45654, 'arriendo', 2, '4', '41', '4103', 0, 15870),
-(3, 'test crear anuncio', '<p>fdfdf fd fd gfd g</p>\n\n<p>fdg</p>\n\n<p>&nbsp;</p>\n\n<p>fdg</p>\n\n<p>fdfg</p>', 0, 34344, 'arriendo', 2, '2', '23', '2301', 9, 21160),
-(4, 'anuncio_test1', '<p>dasdsad</p>\n\n<p>fds</p>\n\n<p>f</p>\n\n<p>ds</p>\n\n<p>f</p>\n\n<p>sd</p>', 0, 2434, 'arriendo', 2, '2', '22', '2201', 9, 21160),
-(5, 'anuncio_test2', '<p>dwer</p>\n\n<p>wer</p>\n\n<p>we</p>\n\n<p>r</p>\n\n<p>we</p>\n\n<p>&nbsp;</p>', 0, 32432, 'arriendo', 2, '13', '132', '13202', 9, 26450),
-(6, 'anuncio test 3', '<p>fsd</p>\n\n<p>f</p>\n\n<p>sd</p>\n\n<p>f</p>\n\n<p>sd</p>\n\n<p>fsdfsdf</p>', 0, 32434, 'transporte', 2, '4', '42', '4201', 9, 15870),
-(7, 'anuncio 69', '<p>erwer</p>\n\n<p>ew</p>\n\n<p>r</p>\n\n<p>ew</p>\n\n<p>rew</p>', 0, 32434, 'arriendo', 2, '13', '134', '13402', 9, 26450);
+(1, 'anuncio1', '<h1>Encuentra Rent a car</h1>\n\n<p><a href=\"https://www.despegar.cl/autos/c-scl/autos-en-santiago+de+chile?p=M1:1\"><img src=\"https://media.staticontent.com/media/pictures/3a0ad42f-ab88-49f3-9302-2d875cef0c07/420x210\" /></a></p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-scl/autos-en-santiago+de+chile?p=M1:1\">Autos en Santiago de Chile</a></p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-pmc/autos-en-puerto+montt?p=M1:2\"><img src=\"https://media.staticontent.com/media/pictures/cdf31360-8f4a-4fa3-b849-8ceb3f3552bf/420x210\" /></a></p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-pmc/autos-en-puerto+montt?p=M1:2\">Autos en Puerto Montt</a></p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-orl/autos-en-orlando?p=M1:3\"><img src=\"https://media.staticontent.com/media/pictures/c7ef0021-f4c3-4e9d-95b5-5c4832b2fa46/420x210\" /></a></p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-orl/autos-en-orlando?p=M1:3\">Autos en Orlando</a></p>\n\n<h3>Recibe ofertas en tu email</h3>\n\n<p><em>Suscribirme</em></p>\n\n<p>&nbsp;</p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-rio/autos-en-rio+de+janeiro?p=M1:5\">Autos en Rio de Janeiro</a></p>\n\n<p>&nbsp;</p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-cjc/autos-en-calama?p=M1:6\">Autos en Calama</a></p>\n\n<p>&nbsp;</p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-zco/autos-en-temuco?p=M1:7\">Autos en Temuco</a></p>\n\n<p>&nbsp;</p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-iqq/autos-en-iquique?p=M1:8\">Autos en Iquique</a></p>\n\n<p>&nbsp;</p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-lax/autos-en-los+angeles?p=M1:9\">Autos en Los &Aacute;ngeles</a></p>\n\n<p>&nbsp;</p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-cun/autos-en-cancun?p=M1:10\">Autos en Canc&uacute;n</a></p>\n\n<p>&nbsp;</p>\n\n<p><a href=\"https://www.despegar.cl/autos/c-lsc/autos-en-la+serena?p=M1:11\">Autos en La Serena</a></p>\n\n<p>Paquetes de Viajes: encuentre las mejores ofertas</p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/rio/paquetes-a-rio+de+janeiro?p=M2:1\" rel=\"nofollow\"><img src=\"https://media.staticontent.com/media/pictures/fa471d44-22d4-45d2-9506-9a145bc4368c/420x210\" /></a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/rio/paquetes-a-rio+de+janeiro?p=M2:1\" rel=\"nofollow\">Paquetes a Rio de Janeiro</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/rio/paquetes-a-rio+de+janeiro?p=M2:1\" rel=\"nofollow\">7 noches, Hotel + Vuelo</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/rio/paquetes-a-rio+de+janeiro?p=M2:1\" rel=\"nofollow\">&nbsp;&nbsp;&nbsp;</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/rio/paquetes-a-rio+de+janeiro?p=M2:1\" rel=\"nofollow\">2 personas desde&nbsp;</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/rio/paquetes-a-rio+de+janeiro?p=M2:1\" rel=\"nofollow\">$ 886.300</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/rio/paquetes-a-rio+de+janeiro?p=M2:1\" rel=\"nofollow\">$&nbsp;766.326</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/rio/paquetes-a-rio+de+janeiro?p=M2:1\" rel=\"nofollow\">13<small>%</small></a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/rio/paquetes-a-rio+de+janeiro?p=M2:1\" rel=\"nofollow\">- OFF -</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/bue/paquetes-a-buenos+aires?p=M2:2\" rel=\"nofollow\"><img src=\"https://media.staticontent.com/media/pictures/b7372c57-3694-4d89-bf15-3c4d7f45005c/420x210\" /></a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/bue/paquetes-a-buenos+aires?p=M2:2\" rel=\"nofollow\">Paquetes a Buenos Aires</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/bue/paquetes-a-buenos+aires?p=M2:2\" rel=\"nofollow\">4 noches, Hotel + Vuelo</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/bue/paquetes-a-buenos+aires?p=M2:2\" rel=\"nofollow\">&nbsp;&nbsp;</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/bue/paquetes-a-buenos+aires?p=M2:2\" rel=\"nofollow\">2 personas desde&nbsp;</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/bue/paquetes-a-buenos+aires?p=M2:2\" rel=\"nofollow\">$ 524.332</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/bue/paquetes-a-buenos+aires?p=M2:2\" rel=\"nofollow\">$&nbsp;442.776</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/bue/paquetes-a-buenos+aires?p=M2:2\" rel=\"nofollow\">15<small>%</small></a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/bue/paquetes-a-buenos+aires?p=M2:2\" rel=\"nofollow\">- OFF -</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/puj/paquetes-a-punta+cana?p=M2:3\" rel=\"nofollow\"><img src=\"https://media.staticontent.com/media/pictures/375ed451-b04a-446d-b146-cd7d8041a82e/420x210\" /></a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/puj/paquetes-a-punta+cana?p=M2:3\" rel=\"nofollow\">Paquetes a Punta Cana</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/puj/paquetes-a-punta+cana?p=M2:3\" rel=\"nofollow\">6 noches, Hotel + Vuelo</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/puj/paquetes-a-punta+cana?p=M2:3\" rel=\"nofollow\">&nbsp;&nbsp;&nbsp;</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/puj/paquetes-a-punta+cana?p=M2:3\" rel=\"nofollow\">2 personas desde&nbsp;</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/puj/paquetes-a-punta+cana?p=M2:3\" rel=\"nofollow\">$ 2.020.318</a></p>\n\n<p><a href=\"https://www.despegar.cl/paquetes/puj/paquetes-a-punta+cana?p=M2:3\" rel=\"nofollow\">$&nbsp;1.548.</a></p>', 0, 34434, 'arriendo', 2, '4', '41', '4103', 9, 0);
 
 -- --------------------------------------------------------
 
@@ -636,13 +630,7 @@ CREATE TABLE `forma_pago` (
 --
 
 INSERT INTO `forma_pago` (`num_pago`, `modo`, `fecha_pago`) VALUES
-(1, 'tarjeta', '2018-05-05 16:27:25'),
-(2, 'tarjeta', '2018-05-17 04:51:11'),
-(3, 'gratis', '2018-06-13 02:50:24'),
-(4, 'gratis', '2018-06-15 19:23:53'),
-(5, 'gratis', '2018-06-15 19:25:49'),
-(6, 'gratis', '2018-06-15 19:55:24'),
-(7, 'gratis', '2018-06-15 20:04:35');
+(1, 'gratis', '2018-07-02 20:51:18');
 
 -- --------------------------------------------------------
 
@@ -661,13 +649,8 @@ CREATE TABLE `fotos` (
 --
 
 INSERT INTO `fotos` (`id_foto`, `id_anuncio`, `foto`) VALUES
-(0, 1, '/uploads/7rRaCGktmlLDdBdy7tQERUGX29WLhKOK37VhCSbNT77KcbhX4m-descarga.jpg'),
-(0, 2, '/uploads/pula8QkxeRwW1Ly17cArKSB67AWhJjGO0fFyEI291ytKjDI1wx-603499-600-338.jpg'),
-(0, 3, '/uploads/IH6wt6gZ9v1LDIZ2br4n4YwJ1As42cvPjk3yyxqwJtUkutXDSC-epcp-1012-08-o+fast-forward+morgan-eva-gt.jpg'),
-(0, 4, '/uploads/At1y36WDm6NgkAQoAJIbvFMNFT7Uax3WRYvcVBGGLw6vYNDQo2-tamo-racemo-geneva-motor-show-2017-HD.jpg'),
-(0, 5, '/uploads/WWlKrSrLI4RKXEM67cLqwFtZ7Pwj2Fb4scrg1DElMzXDIwmDIH-2017-nissan-versa-sv-auto-sedan-blue_featured.png'),
-(0, 6, '/uploads/5NBFaT2cQqsFXRHm2EKfoXNoHuBcrre2r8IZlSJta0wGVEJqTL-603499-600-338.jpg'),
-(0, 7, '/uploads/rgAqhFniyQ5lHxlbBI0LKsbxwpWP9qsZHtIFqjpwAwzEyhxfKN-descarga.jpg');
+(0, 1, '/uploads/3c9RZVsthpxsqAgTohIYVrSquDHbXnuuU6MssuCm3NqueEhrGh-2017-nissan-versa-sv-auto-sedan-blue_featured - copia.png'),
+(1, 1, '/uploads/EXF8rEUFHtjWe9WoxoY9wXqrXI5QFya3np9a0afCb2mXljeJGi-audi-car-car-wallpapers-2394.jpg');
 
 -- --------------------------------------------------------
 
@@ -691,13 +674,7 @@ CREATE TABLE `orden` (
 --
 
 INSERT INTO `orden` (`num_pago`, `id_anuncio`, `id_cliente`, `fecha`, `fecha_venc`, `precio_uni`, `duracion`, `id_secretaria`) VALUES
-(1, 1, 8, '2018-05-05', '2018-09-05', '5290', '4', 32),
-(2, 2, 2, '2018-05-17', '2018-08-17', '5290', '3', 3),
-(3, 3, 2, '2018-06-13', '2018-10-13', '5290', '4', 3),
-(4, 4, 2, '2018-06-15', '2018-10-15', '5290', '4', 5),
-(5, 5, 2, '2018-06-15', '2018-11-15', '5290', '5', 32),
-(6, 6, 2, '2018-06-15', '2018-09-15', '5290', '3', 32),
-(7, 7, 2, '2018-06-15', '2018-11-15', '5290', '5', 5);
+(1, 1, 2, '2018-07-02', '1970-01-01', '5290', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -831,18 +808,17 @@ INSERT INTO `region` (`REGION_ID`, `REGION_NOMBRE`, `ISO_3166_2_CL`) VALUES
 
 CREATE TABLE `secretaria` (
   `id_secretaria` int(11) NOT NULL,
-  `anuncios_pend` int(11) DEFAULT NULL,
-  `estado` varchar(15) COLLATE utf8_spanish2_ci NOT NULL
+  `anuncios_pend` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `secretaria`
 --
 
-INSERT INTO `secretaria` (`id_secretaria`, `anuncios_pend`, `estado`) VALUES
-(3, 1, 'activo'),
-(5, 2, 'activo'),
-(32, 2, 'activo');
+INSERT INTO `secretaria` (`id_secretaria`, `anuncios_pend`) VALUES
+(3, 2),
+(5, 2),
+(32, 2);
 
 -- --------------------------------------------------------
 
@@ -880,6 +856,7 @@ CREATE TABLE `users` (
   `email` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   `password` varchar(300) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `tipo` varchar(45) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `estado` varchar(15) COLLATE utf8_spanish2_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `created_at` timestamp(1) NULL DEFAULT NULL,
   `updated_at` timestamp(1) NULL DEFAULT NULL
@@ -889,36 +866,36 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `rut`, `nombre`, `apellido`, `email`, `password`, `tipo`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, '19.344.212-2', 'Boris', 'Mora', 'admin@ucm.cl', '$2y$10$aIZ6WaeH7CgP/EjyxmS3dOr20aG9cRsgnUMiXrBlyUZgBI80R6WxC', 'admin', 'uPfRR8SDcJnJCtT9oNFz8JFFe0UmY5GMNH0u8Fq1wLgY3fTuvRxXQAAhb8vY', '2017-10-17 00:51:12.0', '2017-10-17 00:51:12.0'),
-(2, '17.324.545-6', 'Rodrigo', 'Rodirguez', 'cliente@ucm.cl', '$2y$10$8fxHUBybt8ux4zVJ7eQmHOuZvLFJbilnnEMT65ei2Lw8dtqqN/qCS', 'cliente', 'ya4InXnC8GjDbaqjkNtNrGdGPEO4tKZlL0hci13l0ZQvisNnazztbOgdfYiE', '2017-10-17 00:54:59.0', '2017-10-17 00:54:59.0'),
-(3, '18938323-5', 'Fernanda', 'Fernandez', 'secretaria@ucm.cl', '$2y$10$tAoGISY0s4T0jikX4JCQpOBEGMDODSpmC34bDsMdenNU9eLcQ6aBy', 'secretaria', 'EkNeqjIyLiMYQTRqrJwvMB7tkRDnj3pA6BPgZqUgHbg4aFi5OShN40Fhlvgu', '2017-10-17 00:55:50.0', '2017-10-17 00:55:50.0'),
-(5, '172232323-2', 'Constanza', 'Contreras', 'secretaria2@ucm.cl', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'secretaria', '1kkmZWiY5mtppraEHesRUrFUzKsoAZcInE9h5UCBrcxlwBkQ5yeZrwLVfz3W', '2017-10-18 07:03:02.0', '2017-10-18 07:03:02.0'),
-(7, '1832832324-5', 'Alfonso', 'Patamala', 'cliente4@ucm.cl', '$2y$10$1Nx0CdeN4yMYKEg6vCyjgev0PxA6N63iIXsSUh8b8uKpOfJQoGkMa', 'cliente', NULL, '2017-10-18 08:04:06.0', '2017-10-18 08:04:06.0'),
-(8, '1734234234-5', 'Susana', 'Castillo', 'cliente2@ucm.cl', '$2y$10$oy5hmF1Fe/6qo5By742VweZrk.v9wvF5MOO7XqR0tgPIFSvJ0mz8u', 'cliente', 'bR5nVhbBO0FVv39RRwDyLnxFpkB9MoWJNytrawgasKmHfGqeCkGPtnuyoIh7', '2017-10-18 21:01:18.0', '2017-10-18 21:01:18.0'),
-(9, '173626363-k', 'Pedro', 'Perez', 'cliente3@ucm.cl', '$2y$10$/IG1.odVPfrb1wXauGNT7.RIMMdaEDwkQdQlU1YyOkQzJy7E5FisG', 'cliente', 'aTIok9g6YbM8uVmYehM0apewFVMCAGuTtn1bJbNeGLTawsdkuWEC3eLEO6of', '2017-10-18 21:03:40.0', '2017-10-18 21:03:40.0'),
-(11, '172232323-2', 'DANIEL EDUARDO', 'ALARCON CHAMBLES', 'daniel.alarcon.ch@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(12, '18573726-8', 'JUAN CARLOS', 'ALARCON VILLAMAN', 'j.alarconvillaman@outlook.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(13, '18575902-4', 'CARLOS ALBERTO', 'CARRERA ZUNIGA', 'carlosacz1994@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(14, '18692842-3', 'FRANCISCO JAVIER', 'DE LA FUENTE OPAZO', 'fco_delafuente_@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(15, '18656310-7', 'NICOLAS ANDRE', 'DURAN ENCINA', 'nicoooduran@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(16, '18344193-0', 'CARLOS ANDRES', 'FARFAN RETAMAL', 'lobo_100_solitario@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(17, '17322605-5', 'SANTIAGO ANDRES', 'FUENTES BENAVIDES', 'stgo90@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(18, '18329408-3', 'AMARU DAVID', 'GAJARDO MORALES', 'adgajardom@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(19, '18893801-9', 'SEBASTIAN IGNACIO', 'GARRIDO CACERES', 'sgarridocaceres@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(20, '19105900-K', 'EDUARDO ISRAEL', 'GONZALEZ TRONCOSO', 'israxx2@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(21, '18779791-8', 'ALEX FELIPE', 'HERRERA SARAVIA', 'wizwizcl@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(22, '18781115-5 ', 'MANUEL TOMAS', 'IBANEEZ BARRIOS', 'tomas.ib94@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(23, '19044801-0', 'CARLOS FELIPE', 'INOSTROZA BRAVO', 'krlos_erd@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(24, '18966705-1', 'IGNACIO JAVIER', 'LILLO TAPIA', 'lillo@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(25, '18877975-1', 'JOSE MATIAS', 'MANRIQUEZ TRONCOSO', 'josemtroncoso95@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(26, '17186568-9', 'MARTA VERONICA', 'MELLA VILLALOBOS', 'martii_mvi@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(27, '18780321-7', 'FUAD RICARDO', 'NAZAL JAQUE', 'fuad@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(28, '19106509-3', 'CARLOS MATIAS', 'ORELLANA FUENTES', 'carlosmof15@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(29, '118576067-7', 'RICARDO MATIAS', 'RIFFO ARAYA', 'rr.ricardo.riffo@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(30, '19105288-9', 'ESTEFANIA ANDREA', 'SILVA MOLINA', 'fanny.andrea@outlook.es', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(31, '18980990-5', 'JAIME MAURICIO', 'VALENZUELA MUNOZ', 'jiimy_94@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
-(32, '16.324.434-2', 'Victoria', 'Valencia', 'secretaria3@ucm.cl', '123456', 'secretaria', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `rut`, `nombre`, `apellido`, `email`, `password`, `tipo`, `estado`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, '19.344.212-2', 'Boris', 'Mora', 'admin@ucm.cl', '$2y$10$aIZ6WaeH7CgP/EjyxmS3dOr20aG9cRsgnUMiXrBlyUZgBI80R6WxC', 'admin', 'activo', 'nwyOLkczVHskDUEvcwAFjHZLWbkjAVL4HB0XzQkBGRH2FzdBpiKg42JKsUSP', '2017-10-17 00:51:12.0', '2017-10-17 00:51:12.0'),
+(2, '17.324.545-6', 'Rodrigo', 'Rodirguez', 'cliente@ucm.cl', '$2y$10$8fxHUBybt8ux4zVJ7eQmHOuZvLFJbilnnEMT65ei2Lw8dtqqN/qCS', 'cliente', 'activo', 'buMULFclEXhqYYY8p4hedDzrMwkcgp2v5px4GcrxtnPhKLDWIeNLP5ddgL4X', '2017-10-17 00:54:59.0', '2017-10-17 00:54:59.0'),
+(3, '18938323-5', 'Fernanda', 'Fernandez', 'secretaria@ucm.cl', '$2y$10$tAoGISY0s4T0jikX4JCQpOBEGMDODSpmC34bDsMdenNU9eLcQ6aBy', 'secretaria', 'activo', 'LexRQMP9OWy3hFbKZIG9EjqYUiyRTPKJiVtxZyngLtVpvObeSxdlmHh7OkWd', '2017-10-17 00:55:50.0', '2017-10-17 00:55:50.0'),
+(5, '172232323-2', 'Constanza', 'Contreras', 'secretaria2@ucm.cl', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'secretaria', 'activo', '1kkmZWiY5mtppraEHesRUrFUzKsoAZcInE9h5UCBrcxlwBkQ5yeZrwLVfz3W', '2017-10-18 07:03:02.0', '2017-10-18 07:03:02.0'),
+(7, '1832832324-5', 'Alfonso', 'Patamala', 'cliente4@ucm.cl', '$2y$10$1Nx0CdeN4yMYKEg6vCyjgev0PxA6N63iIXsSUh8b8uKpOfJQoGkMa', 'cliente', 'activo', NULL, '2017-10-18 08:04:06.0', '2017-10-18 08:04:06.0'),
+(8, '1734234234-5', 'Susana', 'Castillo', 'cliente2@ucm.cl', '$2y$10$oy5hmF1Fe/6qo5By742VweZrk.v9wvF5MOO7XqR0tgPIFSvJ0mz8u', 'cliente', 'activo', 'bR5nVhbBO0FVv39RRwDyLnxFpkB9MoWJNytrawgasKmHfGqeCkGPtnuyoIh7', '2017-10-18 21:01:18.0', '2017-10-18 21:01:18.0'),
+(9, '173626363-k', 'Pedro', 'Perez', 'cliente3@ucm.cl', '$2y$10$/IG1.odVPfrb1wXauGNT7.RIMMdaEDwkQdQlU1YyOkQzJy7E5FisG', 'cliente', 'activo', 'aTIok9g6YbM8uVmYehM0apewFVMCAGuTtn1bJbNeGLTawsdkuWEC3eLEO6of', '2017-10-18 21:03:40.0', '2017-10-18 21:03:40.0'),
+(11, '172232323-2', 'DANIEL EDUARDO', 'ALARCON CHAMBLES', 'daniel.alarcon.ch@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(12, '18573726-8', 'JUAN CARLOS', 'ALARCON VILLAMAN', 'j.alarconvillaman@outlook.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(13, '18575902-4', 'CARLOS ALBERTO', 'CARRERA ZUNIGA', 'carlosacz1994@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(14, '18692842-3', 'FRANCISCO JAVIER', 'DE LA FUENTE OPAZO', 'fco_delafuente_@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(15, '18656310-7', 'NICOLAS ANDRE', 'DURAN ENCINA', 'nicoooduran@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(16, '18344193-0', 'CARLOS ANDRES', 'FARFAN RETAMAL', 'lobo_100_solitario@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(17, '17322605-5', 'SANTIAGO ANDRES', 'FUENTES BENAVIDES', 'stgo90@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(18, '18329408-3', 'AMARU DAVID', 'GAJARDO MORALES', 'adgajardom@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(19, '18893801-9', 'SEBASTIAN IGNACIO', 'GARRIDO CACERES', 'sgarridocaceres@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(20, '19105900-K', 'EDUARDO ISRAEL', 'GONZALEZ TRONCOSO', 'israxx2@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(21, '18779791-8', 'ALEX FELIPE', 'HERRERA SARAVIA', 'wizwizcl@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(22, '18781115-5 ', 'MANUEL TOMAS', 'IBANEEZ BARRIOS', 'tomas.ib94@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(23, '19044801-0', 'CARLOS FELIPE', 'INOSTROZA BRAVO', 'krlos_erd@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(24, '18966705-1', 'IGNACIO JAVIER', 'LILLO TAPIA', 'lillo@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(25, '18877975-1', 'JOSE MATIAS', 'MANRIQUEZ TRONCOSO', 'josemtroncoso95@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(26, '17186568-9', 'MARTA VERONICA', 'MELLA VILLALOBOS', 'martii_mvi@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(27, '18780321-7', 'FUAD RICARDO', 'NAZAL JAQUE', 'fuad@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(28, '19106509-3', 'CARLOS MATIAS', 'ORELLANA FUENTES', 'carlosmof15@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(29, '118576067-7', 'RICARDO MATIAS', 'RIFFO ARAYA', 'rr.ricardo.riffo@gmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(30, '19105288-9', 'ESTEFANIA ANDREA', 'SILVA MOLINA', 'fanny.andrea@outlook.es', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(31, '18980990-5', 'JAIME MAURICIO', 'VALENZUELA MUNOZ', 'jiimy_94@hotmail.com', '$2y$10$G9AAb3zvRTJd3mSQaL9Tv.dY15n6hwpi1DjstN882WEVcZNBX49jy', 'cliente', 'activo', NULL, '2017-11-29 07:03:02.0', '2017-11-29 07:03:02.0'),
+(32, '16.324.434-2', 'Victoria', 'Valencia', 'secretaria3@ucm.cl', '123456', 'secretaria', 'activo', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -938,13 +915,7 @@ CREATE TABLE `vehiculo` (
 --
 
 INSERT INTO `vehiculo` (`id_anuncio`, `patente`, `categoria`, `capacidad`) VALUES
-(1, 'ER-4344', 'auto', 'ERER'),
-(2, 'er-3423', 'auto', 'qweqweq'),
-(3, 'ewew', 'bus', 'ewewe'),
-(4, 'er-3434', 'camion', 'ewrwe'),
-(5, 'er-54354', 'bus', 'ewre'),
-(6, 'er-4454', 'camion', '4324'),
-(7, 'er-3444', 'camion2', 'dsads');
+(1, 'er-32323', 'camion', '2 personas');
 
 --
 -- Índices para tablas volcadas
@@ -1094,7 +1065,7 @@ ALTER TABLE `diccionario`
 -- AUTO_INCREMENT de la tabla `forma_pago`
 --
 ALTER TABLE `forma_pago`
-  MODIFY `num_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `num_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
