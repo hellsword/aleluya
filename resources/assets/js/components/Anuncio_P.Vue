@@ -86,21 +86,21 @@ export default {
 		
 		
         methods: {
-            getAnuncios: function() {
-                    
+            getAnuncios: function() { // se llama los datos en donde se almcenan los anuncios
+                                      // con la condicion de que aun no hayan sido aceptados por la secretaria
                 var urlKeeps = 'anunciospen';
                 axios.get(urlKeeps).then(response => {
                     this.servicios = response.data
                 });
 			},
 
-            edit_anuncio: function(anuncio) {
+            edit_anuncio: function(anuncio) { // se llaman los datos del anuncio a editar y se mandan a un modal
                 this.id_anuncio = anuncio.id_anuncio;
                 this.titulo = anuncio.titulo;
                 this.descripcion= anuncio.descripcion;
                 this.modal_actualiza = true;
             },
-            update_anuncio: function(){
+            update_anuncio: function(){ // se mandan los datos del anuncio para que se actualicen en la base de datos
                 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 
                 var url = 'update_anunciospen';
@@ -124,8 +124,8 @@ export default {
         components: { 
             Ckeditor,
         },
-        mounted() {
-            this.getAnuncios()
+        mounted() { // se llaman los datos al componente para que se muestran en pantalla
+            this.getAnuncios() 
         }
         
     }

@@ -32,6 +32,7 @@ class User2Controller extends Controller
         $usuario->rut=$request->get('rut');
         $usuario->nombre=$request->get('nombre');
         $usuario->apellido=$request->get('apellido');
+        $usuario->estado='activo';
         $usuario->email=$request->get('email');
         $usuario->password=bcrypt($request->get('password'));
         $usuario->tipo = 'cliente';
